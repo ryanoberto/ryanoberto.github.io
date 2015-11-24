@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>My Octopress Blog</title>
-  <meta name="author" content="Your Name">
+  <title>CyberSlave</title>
+  <meta name="author" content="Ryan Oberto">
 
   
-  <meta name="description" content=" Blog Archives Recent Posts ">
+  <meta name="description" content="Blog Archives About Me
+A little something about me.
+======= A little something about me. >>>>>>> 810894335db02ebdc36f081c31e6b3274dcb2619 Recent &hellip;&#8221;>
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +23,7 @@
   <link rel="canonical" href="http://ryanoberto.github.io/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="CyberSlave" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -36,9 +38,9 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">My Octopress Blog</a></h1>
+  <h1><a href="/">CyberSlave</a></h1>
   
-    <h2>A blogging framework for hackers.</h2>
+    <h2>Live the life you love.</h2>
   
 </hgroup>
 
@@ -58,6 +60,10 @@
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
+<<<<<<< HEAD
+=======
+   <li><a href="/about">About</a></li>
+>>>>>>> 810894335db02ebdc36f081c31e6b3274dcb2619
 </ul>
 
 </nav>
@@ -75,10 +81,48 @@
 <aside class="sidebar">
   
     <section>
+  <h1>About Me</h1>
+<<<<<<< HEAD
+  <p>A little something about me.</p>
+=======
+  <p><a href="/about">A little something about me.</a></p>
+<img src="/images/rhce.jpg" width="60"><img src="/images/cpt.jpg" width="60"><img src="/images/ceh.jpg" width="60">
+>>>>>>> 810894335db02ebdc36f081c31e6b3274dcb2619
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
   </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/ryanoberto">@ryanoberto</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ryanoberto',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
 </section>
 
 
@@ -91,7 +135,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Your Name -
+  Copyright &copy; 2015 - Ryan Oberto -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
