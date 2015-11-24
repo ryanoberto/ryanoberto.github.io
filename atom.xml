@@ -4,7 +4,7 @@
   <title><![CDATA[CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2015-11-24T22:12:49+02:00</updated>
+  <updated>2015-11-24T22:16:21+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -12,5 +12,158 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Nessus API]]></title>
+    <link href="http://ryanoberto.github.io/blog/2015/08/03/nessus-api/"/>
+    <updated>2015-08-03T09:05:22+02:00</updated>
+    <id>http://ryanoberto.github.io/blog/2015/08/03/nessus-api</id>
+    <content type="html"><![CDATA[<h2>Nessus API cli</h2>
+
+<p>So I recently needed to add multiple scans to nessus and export the results for splunk, being new to python and loving it.
+I decided to look for some examples and work from there,
+I found &ldquo;<a href="https://github.com/averagesecurityguy/Nessus6/blob/master/nessus6_scan_demo.py">https://github.com/averagesecurityguy/Nessus6/blob/master/nessus6_scan_demo.py</a>&rdquo; grabbed a copy and started to modify it to what I needed.</p>
+
+<p>Warning this is not the best code but does what I currenlty need it to do.</p>
+
+<p>The source can be found here <a href="https://github.com/ryanoberto/nessus-api-cli.">https://github.com/ryanoberto/nessus-api-cli.</a></p>
+
+<p>Firstly start off by editing all the required fields</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>url = 'https://&lt;HOST&gt;:8834'
+</span><span class='line'>username = '&lt;USERNAME&gt;'
+</span><span class='line'>password = '&lt;PASSWORD&gt;'
+</span><span class='line'>email = '&lt;EMAIL&gt;'
+</span><span class='line'>filename = '/&lt;PATH&gt;/nessus_{0}_{1}.nessus'.format(sid, fid)
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Usage:</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>./nessus-cli.py -h
+</span><span class='line'>
+</span><span class='line'>##################################
+</span><span class='line'>#        Nessus api client       #
+</span><span class='line'>##################################
+</span><span class='line'>Add Desktop Scan
+</span><span class='line'>        ./nessus.py add_desktop_scan name description target
+</span><span class='line'>
+</span><span class='line'>Add Server Scan
+</span><span class='line'>        ./nessus.py add_server_scan name description target
+</span><span class='line'>
+</span><span class='line'>List Scans
+</span><span class='line'>        ./nessus.py list_scans
+</span><span class='line'>
+</span><span class='line'>List Subnets
+</span><span class='line'>        ./nessus.py list_subnets
+</span><span class='line'>
+</span><span class='line'>List running scans
+</span><span class='line'>        ./nessus.py list_running_scans
+</span><span class='line'>
+</span><span class='line'>List completed scans
+</span><span class='line'>        ./nessus.py list_completed_scans
+</span><span class='line'>
+</span><span class='line'>Export Scan
+</span><span class='line'>        ./nessus.py export_scan id
+</span><span class='line'>
+</span><span class='line'>Export scans that have not been completed
+</span><span class='line'>        ./nessus.py export_scans
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Start Scan
+</span><span class='line'>        ./nessus.py launch_scan  id
+</span><span class='line'>
+</span><span class='line'>##################################
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Disabling the Creation of .DS_Store Files on a Samba Share]]></title>
+    <link href="http://ryanoberto.github.io/blog/2015/04/01/disabling-the-creation-of-ds-store-files-on-a-samba-share/"/>
+    <updated>2015-04-01T06:09:29+02:00</updated>
+    <id>http://ryanoberto.github.io/blog/2015/04/01/disabling-the-creation-of-ds-store-files-on-a-samba-share</id>
+    <content type="html"><![CDATA[<p>Don&rsquo;t you hate those .DS_Store files lying around on your samba server.</p>
+
+<p>Open up smb.conf and add the following lines to each share:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>veto files = /._*/.DS_Store/
+</span><span class='line'>delete veto files = yes</span></code></pre></td></tr></table></div></figure>
+
+
+<p>restart samba</p>
+
+<p>Now cleanup the server of all those unwanted .DS_Store files.</p>
+
+<p><code>$ find . -type f -name ".DS_Store" -exec rm -f {} \;</code></p>
+
+<p>On your mac client, use this command to prevent any future creation of .DS_Store files on network shares:</p>
+
+<p><code>$ defaults write com.apple.desktopservices DSDontWriteNetworkStores true</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Display Hidden Files and Folders in OSX]]></title>
+    <link href="http://ryanoberto.github.io/blog/2015/04/01/display-hidden-files-and-folders-in-osx/"/>
+    <updated>2015-04-01T06:08:09+02:00</updated>
+    <id>http://ryanoberto.github.io/blog/2015/04/01/display-hidden-files-and-folders-in-osx</id>
+    <content type="html"><![CDATA[<p>There are times when you want to display hidden files (files that start with a dot, like .ssh, .bashrc or .Trash).</p>
+
+<p>Execute this command (as a regular user) from within the Terminal.</p>
+
+<p><code>$ defaults write com.apple.finder AppleShowAllFiles TRUE</code></p>
+
+<p><code>$ killall Finder</code></p>
+
+<p>To Restore the default settings and hide all these files.</p>
+
+<p><code>$ defaults write com.apple.finder AppleShowAllFiles FALSE</code></p>
+
+<p><code>$ killall Finder</code></p>
+]]></content>
+  </entry>
   
 </feed>

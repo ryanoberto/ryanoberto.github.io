@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Samba | CyberSlave]]></title>
+  <link href="http://ryanoberto.github.io/blog/categories/samba/atom.xml" rel="self"/>
+  <link href="http://ryanoberto.github.io/"/>
+  <updated>2015-11-24T22:16:21+02:00</updated>
+  <id>http://ryanoberto.github.io/</id>
+  <author>
+    <name><![CDATA[Ryan Oberto]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Disabling the Creation of .DS_Store Files on a Samba Share]]></title>
+    <link href="http://ryanoberto.github.io/blog/2015/04/01/disabling-the-creation-of-ds-store-files-on-a-samba-share/"/>
+    <updated>2015-04-01T06:09:29+02:00</updated>
+    <id>http://ryanoberto.github.io/blog/2015/04/01/disabling-the-creation-of-ds-store-files-on-a-samba-share</id>
+    <content type="html"><![CDATA[<p>Don&rsquo;t you hate those .DS_Store files lying around on your samba server.</p>
+
+<p>Open up smb.conf and add the following lines to each share:</p>
+
+<pre><code>veto files = /._*/.DS_Store/
+delete veto files = yes
+</code></pre>
+
+<p>restart samba</p>
+
+<p>Now cleanup the server of all those unwanted .DS_Store files.</p>
+
+<p><code>$ find . -type f -name ".DS_Store" -exec rm -f {} \;</code></p>
+
+<p>On your mac client, use this command to prevent any future creation of .DS_Store files on network shares:</p>
+
+<p><code>$ defaults write com.apple.desktopservices DSDontWriteNetworkStores true</code></p>
+]]></content>
+  </entry>
+  
+</feed>

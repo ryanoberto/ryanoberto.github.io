@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>CyberSlave</title>
+  <title>Nessus API - CyberSlave</title>
   <meta name="author" content="Ryan Oberto">
 
   
@@ -19,7 +19,7 @@ I decided &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ryanoberto.github.io/">
+  <link rel="canonical" href="http://ryanoberto.github.io/blog/2015/08/03/nessus-api/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="CyberSlave" type="application/atom+xml">
@@ -65,15 +65,12 @@ I decided &hellip;">
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/08/03/nessus-api/">Nessus API</a></h1>
+      <h1 class="entry-title">Nessus API</h1>
     
     
       <p class="meta">
@@ -89,7 +86,7 @@ I decided &hellip;">
   </header>
 
 
-  <div class="entry-content"><h2>Nessus API cli</h2>
+<div class="entry-content"><h2>Nessus API cli</h2>
 
 <p>So I recently needed to add multiple scans to nessus and export the results for splunk, being new to python and loving it.
 I decided to look for some examples and work from there,
@@ -187,106 +184,46 @@ I found &ldquo;<a href="https://github.com/averagesecurityguy/Nessus6/blob/maste
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/04/01/disabling-the-creation-of-ds-store-files-on-a-samba-share/">Disabling the Creation of .DS_Store Files on a Samba Share</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-04-01T06:09:29+02:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:09 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Don&rsquo;t you hate those .DS_Store files lying around on your samba server.</p>
-
-<p>Open up smb.conf and add the following lines to each share:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>veto files = /._*/.DS_Store/
-</span><span class='line'>delete veto files = yes</span></code></pre></td></tr></table></div></figure>
-
-
-<p>restart samba</p>
-
-<p>Now cleanup the server of all those unwanted .DS_Store files.</p>
-
-<p><code>$ find . -type f -name ".DS_Store" -exec rm -f {} \;</code></p>
-
-<p>On your mac client, use this command to prevent any future creation of .DS_Store files on network shares:</p>
-
-<p><code>$ defaults write com.apple.desktopservices DSDontWriteNetworkStores true</code></p>
-</div>
-  
   
 
+<span class="byline author vcard">Posted by <span class="fn">Ryan Oberto</span></span>
 
-    </article>
-  
-  
-    <article>
       
-  <header>
+
+
+
+
+<time class='entry-date' datetime='2015-08-03T09:05:22+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:05 am</span></time>
+      
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2015/04/01/display-hidden-files-and-folders-in-osx/">Display Hidden Files and Folders in OSX</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-04-01T06:08:09+02:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:08 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>There are times when you want to display hidden files (files that start with a dot, like .ssh, .bashrc or .Trash).</p>
-
-<p>Execute this command (as a regular user) from within the Terminal.</p>
-
-<p><code>$ defaults write com.apple.finder AppleShowAllFiles TRUE</code></p>
-
-<p><code>$ killall Finder</code></p>
-
-<p>To Restore the default settings and hide all these files.</p>
-
-<p><code>$ defaults write com.apple.finder AppleShowAllFiles FALSE</code></p>
-
-<p><code>$ killall Finder</code></p>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ryanoberto.github.io/blog/2015/08/03/nessus-api/" data-via="ryanoberto" data-counturl="http://ryanoberto.github.io/blog/2015/08/03/nessus-api/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/04/01/disabling-the-creation-of-ds-store-files-on-a-samba-share/" title="Previous Post: Disabling the creation of .DS_Store files on a samba share">&laquo; Disabling the creation of .DS_Store files on a samba share</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -348,6 +285,7 @@ I found &ldquo;<a href="https://github.com/averagesecurityguy/Nessus6/blob/maste
 
   
 </aside>
+
 
     </div>
   </div>
