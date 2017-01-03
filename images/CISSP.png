@@ -1,0 +1,12 @@
+<html>
+<head>
+<title>Request Rejected</title>
+</head>
+<body>
+<center>
+<img src="https://isc2azewebappsstor.blob.core.windows.net/f5errorpagecontent/isc2-homepage-header.jpg"> 
+<p>There was an error with your request.</p>
+<p>Please contact <a href="mailto:servicedesk@isc2.org?subject=Website Request Rejected - Support ID: 1572636811904529276&amp;body=Support ID: 1572636811904529276.%0D%0APlease include a short description of what happened prior to this error.">servicedesk@isc2.org</a> with Support ID: <b>1572636811904529276</b></p>
+</center>
+</body>
+</html>
