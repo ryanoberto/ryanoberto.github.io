@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>CyberSlave</title>
+  <title>Ew Skuzzy! CTF Walkthrough - CyberSlave</title>
   <meta name="author" content="Ryan Oberto">
 
   
@@ -25,7 +25,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ryanoberto.github.io/">
+  <link rel="canonical" href="http://ryanoberto.github.io/blog/2017/03/28/ew-skuzzy-ctf-walkthrough/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="CyberSlave" type="application/atom+xml">
@@ -71,15 +71,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2017/03/28/ew-skuzzy-ctf-walkthrough/">Ew Skuzzy! CTF Walkthrough</a></h1>
+      <h1 class="entry-title">Ew Skuzzy! CTF Walkthrough</h1>
     
     
       <p class="meta">
@@ -95,7 +92,7 @@
   </header>
 
 
-  <div class="entry-content"><h2>Ew Skuzzy! CTF Walkthrough</h2>
+<div class="entry-content"><h2>Ew Skuzzy! CTF Walkthrough</h2>
 
 <p>In this post I am going to show you how to solve the <a href="https://www.vulnhub.com/entry/ew_skuzzy-1,184/">Ew Skuzzy CTF</a> provided by <a href="https://twitter.com/@vortexau">vortexau</a>.</p>
 
@@ -417,231 +414,52 @@ root@skuzzy:/opt# export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:
 
 <p>This was great fun and learnt something new, Thanks <a href="https://twitter.com/@vortexau">@vortexau</a></p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/08/03/nessus-api/">Nessus API</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-03T09:05:22+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:05 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Nessus API cli</h2>
-
-<p>So I recently needed to add multiple scans to nessus and export the results for splunk, being new to python and loving it.
-I decided to look for some examples and work from there,
-I found &ldquo;<a href="https://github.com/averagesecurityguy/Nessus6/blob/master/nessus6_scan_demo.py">https://github.com/averagesecurityguy/Nessus6/blob/master/nessus6_scan_demo.py</a>&rdquo; grabbed a copy and started to modify it to what I needed.</p>
-
-<p>Warning this is not the best code but does what I currenlty need it to do.</p>
-
-<p>The source can be found here <a href="https://github.com/ryanoberto/nessus-api-cli.">https://github.com/ryanoberto/nessus-api-cli.</a></p>
-
-<p>Firstly start off by editing all the required fields</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>url = 'https://&lt;HOST&gt;:8834'
-</span><span class='line'>username = '&lt;USERNAME&gt;'
-</span><span class='line'>password = '&lt;PASSWORD&gt;'
-</span><span class='line'>email = '&lt;EMAIL&gt;'
-</span><span class='line'>filename = '/&lt;PATH&gt;/nessus_{0}_{1}.nessus'.format(sid, fid)
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Usage:</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>./nessus-cli.py -h
-</span><span class='line'>
-</span><span class='line'>##################################
-</span><span class='line'>#        Nessus api client       #
-</span><span class='line'>##################################
-</span><span class='line'>Add Desktop Scan
-</span><span class='line'>        ./nessus.py add_desktop_scan name description target
-</span><span class='line'>
-</span><span class='line'>Add Server Scan
-</span><span class='line'>        ./nessus.py add_server_scan name description target
-</span><span class='line'>
-</span><span class='line'>List Scans
-</span><span class='line'>        ./nessus.py list_scans
-</span><span class='line'>
-</span><span class='line'>List Subnets
-</span><span class='line'>        ./nessus.py list_subnets
-</span><span class='line'>
-</span><span class='line'>List running scans
-</span><span class='line'>        ./nessus.py list_running_scans
-</span><span class='line'>
-</span><span class='line'>List completed scans
-</span><span class='line'>        ./nessus.py list_completed_scans
-</span><span class='line'>
-</span><span class='line'>Export Scan
-</span><span class='line'>        ./nessus.py export_scan id
-</span><span class='line'>
-</span><span class='line'>Export scans that have not been completed
-</span><span class='line'>        ./nessus.py export_scans
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>Start Scan
-</span><span class='line'>        ./nessus.py launch_scan  id
-</span><span class='line'>
-</span><span class='line'>##################################
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
   
 
+<span class="byline author vcard">Posted by <span class="fn">Ryan Oberto</span></span>
 
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/04/01/disabling-the-creation-of-ds-store-files-on-a-samba-share/">Disabling the Creation of .DS_Store Files on a Samba Share</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
 
-<time class='entry-date' datetime='2015-04-01T06:09:29+02:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:09 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Don&rsquo;t you hate those .DS_Store files lying around on your samba server.</p>
-
-<p>Open up smb.conf and add the following lines to each share:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>veto files = /._*/.DS_Store/
-</span><span class='line'>delete veto files = yes</span></code></pre></td></tr></table></div></figure>
-
-
-<p>restart samba</p>
-
-<p>Now cleanup the server of all those unwanted .DS_Store files.</p>
-
-<p><code>$ find . -type f -name ".DS_Store" -exec rm -f {} \;</code></p>
-
-<p>On your mac client, use this command to prevent any future creation of .DS_Store files on network shares:</p>
-
-<p><code>$ defaults write com.apple.desktopservices DSDontWriteNetworkStores true</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+<time class='entry-date' datetime='2017-03-28T10:41:59+02:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:41 am</span></time>
       
-  <header>
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ctf/'>ctf</a>, <a class='category' href='/blog/categories/vulnhub/'>vulnhub</a>, <a class='category' href='/blog/categories/walkthrough/'>walkthrough</a>
+  
+</span>
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2015/04/01/display-hidden-files-and-folders-in-osx/">Display Hidden Files and Folders in OSX</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-04-01T06:08:09+02:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:08 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>There are times when you want to display hidden files (files that start with a dot, like .ssh, .bashrc or .Trash).</p>
-
-<p>Execute this command (as a regular user) from within the Terminal.</p>
-
-<p><code>$ defaults write com.apple.finder AppleShowAllFiles TRUE</code></p>
-
-<p><code>$ killall Finder</code></p>
-
-<p>To Restore the default settings and hide all these files.</p>
-
-<p><code>$ defaults write com.apple.finder AppleShowAllFiles FALSE</code></p>
-
-<p><code>$ killall Finder</code></p>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ryanoberto.github.io/blog/2017/03/28/ew-skuzzy-ctf-walkthrough/" data-via="ryanoberto" data-counturl="http://ryanoberto.github.io/blog/2017/03/28/ew-skuzzy-ctf-walkthrough/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/08/03/nessus-api/" title="Previous Post: Nessus API">&laquo; Nessus API</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -712,6 +530,7 @@ I found &ldquo;<a href="https://github.com/averagesecurityguy/Nessus6/blob/maste
 
   
 </aside>
+
 
     </div>
   </div>
