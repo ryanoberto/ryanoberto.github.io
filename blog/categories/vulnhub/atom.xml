@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vulnhub | CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/blog/categories/vulnhub/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-03-28T12:03:53+02:00</updated>
+  <updated>2017-03-28T12:30:52+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -238,6 +238,8 @@ Going off the above clues we decode the email.</p>
 password : supercalifragilisticoespialidoso
 </code></pre>
 
+<p>Flag 3</p>
+
 <pre><code>/mnt/disk # cat ToAlice.csv
 
 Web Path,Reason
@@ -246,43 +248,46 @@ c2444910794e037ebd8aaf257178c90b,Nice clean well prepped site. Nothing of intere
 flag3{2cce194f49c6e423967b7f72316f48c5caf46e84},The strangest URL I've seen? What is it?
 </code></pre>
 
-<p><a href="http://192.168.56.101/5560a1468022758dba5e92ac8f2353c0">http://192.168.56.101/5560a1468022758dba5e92ac8f2353c0</a></p>
+<p>Following the clues in Flag3</p>
 
-<p>/mnt # echo &ldquo;R2VvcmdlIENvc3RhbnphOiBbU291cCBOYXppIGdpdmVzIGhpbSBhIGxvb2tdIE1lZGl1bSB0dXJr
-ZXkgY2hpbGkuIApbaW5zdGFudGx5IG1vdmVzIHRvIHRoZSBjYXNoaWVyXSAKSmVycnkgU2VpbmZl
-bGQ6IE1lZGl1bSBjcmFiIGJpc3F1ZS4gCkdlb3JnZSBDb3N0YW56YTogW2xvb2tzIGluIGhpcyBi
-YWcgYW5kIG5vdGljZXMgbm8gYnJlYWQgaW4gaXRdIEkgZGlkbid0IGdldCBhbnkgYnJlYWQuIApK
-ZXJyeSBTZWluZmVsZDogSnVzdCBmb3JnZXQgaXQuIExldCBpdCBnby4gCkdlb3JnZSBDb3N0YW56
-YTogVW0sIGV4Y3VzZSBtZSwgSSAtIEkgdGhpbmsgeW91IGZvcmdvdCBteSBicmVhZC4gClNvdXAg
-TmF6aTogQnJlYWQsICQyIGV4dHJhLiAKR2VvcmdlIENvc3RhbnphOiAkMj8gQnV0IGV2ZXJ5b25l
-IGluIGZyb250IG9mIG1lIGdvdCBmcmVlIGJyZWFkLiAKU291cCBOYXppOiBZb3Ugd2FudCBicmVh
-ZD8gCkdlb3JnZSBDb3N0YW56YTogWWVzLCBwbGVhc2UuIApTb3VwIE5hemk6ICQzISAKR2Vvcmdl
-IENvc3RhbnphOiBXaGF0PyAKU291cCBOYXppOiBOTyBGTEFHIEZPUiBZT1UKR2VvcmdlIENvc3RhbnphOiBbU291cCBOYXppIGdpdmVzIGhpbSBhIGxvb2tdIE1lZGl1bSB0dXJr
-ZXkgY2hpbGkuIApbaW5zdGFudGx5IG1vdmVzIHRvIHRoZSBjYXNoaWVyXSAKSmVycnkgU2VpbmZl
-bGQ6IE1lZGl1bSBjcmFiIGJpc3F1ZS4gCkdlb3JnZSBDb3N0YW56YTogW2xvb2tzIGluIGhpcyBi
-YWcgYW5kIG5vdGljZXMgbm8gYnJlYWQgaW4gaXRdIEkgZGlkbid0IGdldCBhbnkgYnJlYWQuIApK
-ZXJyeSBTZWluZmVsZDogSnVzdCBmb3JnZXQgaXQuIExldCBpdCBnby4gCkdlb3JnZSBDb3N0YW56
-YTogVW0sIGV4Y3VzZSBtZSwgSSAtIEkgdGhpbmsgeW91IGZvcmdvdCBteSBicmVhZC4gClNvdXAg
-TmF6aTogQnJlYWQsICQyIGV4dHJhLiAKR2VvcmdlIENvc3RhbnphOiAkMj8gQnV0IGV2ZXJ5b25l
-IGluIGZyb250IG9mIG1lIGdvdCBmcmVlIGJyZWFkLiAKU291cCBOYXppOiBZb3Ugd2FudCBicmVh
-ZD8gCkdlb3JnZSBDb3N0YW56YTogWWVzLCBwbGVhc2UuIApTb3VwIE5hemk6ICQzISAKR2Vvcmdl
-IENvc3RhbnphOiBXaGF0PyAKU291cCBOYXppOiBOTyBGTEFHIEZPUiBZT1UK&rdquo; | base64 -d</p>
+<p><a href="http://10.0.2.6/5560a1468022758dba5e92ac8f2353c0">http://10.0.2.6/5560a1468022758dba5e92ac8f2353c0</a></p>
 
-<p>George Costanza: [Soup Nazi gives him a look] Medium turkey chili.
-[instantly moves to the cashier]
-Jerry Seinfeld: Medium crab bisque.
-George Costanza: [looks in his bag and notices no bread in it] I didn&rsquo;t get any bread.
-Jerry Seinfeld: Just forget it. Let it go.
-George Costanza: Um, excuse me, I - I think you forgot my bread.
-Soup Nazi: Bread, $2 extra.
-George Costanza: $2? But everyone in front of me got free bread.
-Soup Nazi: You want bread?
-George Costanza: Yes, please.
-Soup Nazi: $3!
-George Costanza: What?
-Soup Nazi: NO FLAG FOR YOU</p>
+<p><img class="<a" src="href="https://ryanoberto.github.io/images/ew_5560a1468022758dba5e92ac8f2353c0.png">https://ryanoberto.github.io/images/ew_5560a1468022758dba5e92ac8f2353c0.png</a>&#8221;></p>
 
-<p><a href="http://192.168.56.101/c2444910794e037ebd8aaf257178c90b">http://192.168.56.101/c2444910794e037ebd8aaf257178c90b</a></p>
+<p>viewing the source gives us some base64 encoded text which decodes to</p>
+
+<pre><code>George Costanza: [Soup Nazi gives him a look] Medium turkey chili. 
+[instantly moves to the cashier] 
+Jerry Seinfeld: Medium crab bisque. 
+George Costanza: [looks in his bag and notices no bread in it] I didn't get any bread. 
+Jerry Seinfeld: Just forget it. Let it go. 
+George Costanza: Um, excuse me, I - I think you forgot my bread. 
+Soup Nazi: Bread, $2 extra. 
+George Costanza: $2? But everyone in front of me got free bread. 
+Soup Nazi: You want bread? 
+George Costanza: Yes, please. 
+Soup Nazi: $3! 
+George Costanza: What? 
+Soup Nazi: NO FLAG FOR YOU
+</code></pre>
+
+<p><a href="http://192.168.56.101/c2444910794e037ebd8aaf257178c90b">http://192.168.56.101/c2444910794e037ebd8aaf257178c90b</a>
+Browsing around we can see the site is vulnerable to a LFI</p>
+
+<p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=welcome">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=welcome</a>
+<img class="<a" src="href="https://ryanoberto.github.io/images/ew_welcome.png">https://ryanoberto.github.io/images/ew_welcome.png</a>&#8221;></p>
+
+<p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=flag">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=flag</a>
+<img class="<a" src="href="https://ryanoberto.github.io/images/ew_flag.png">https://ryanoberto.github.io/images/ew_flag.png</a>&#8221;></p>
+
+<p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=rule">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=rule</a>
+<img class="<a" src="href="https://ryanoberto.github.io/images/ew_rule.png">https://ryanoberto.github.io/images/ew_rule.png</a>&#8221;></p>
+
+<p>What have we here, below looks vulnerable to a LFI and RFI
+<a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;url=http://127.0.0.1/c2444910794e037ebd8aaf257178c90b/data.txt">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;url=http://127.0.0.1/c2444910794e037ebd8aaf257178c90b/data.txt</a>
+<img class="<a" src="href="https://ryanoberto.github.io/images/ew_reader.png">https://ryanoberto.github.io/images/ew_reader.png</a>&#8221;></p>
+
+<p>Convert the pages to base64 and download them</p>
 
 <p><a href="http://192.168.56.101/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=reader.php">http://192.168.56.101/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=reader.php</a></p>
 
