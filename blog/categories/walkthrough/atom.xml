@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Walkthrough | CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/blog/categories/walkthrough/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-03-28T12:30:52+02:00</updated>
+  <updated>2017-03-28T12:38:31+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -271,21 +271,27 @@ George Costanza: What?
 Soup Nazi: NO FLAG FOR YOU
 </code></pre>
 
-<p><a href="http://192.168.56.101/c2444910794e037ebd8aaf257178c90b">http://192.168.56.101/c2444910794e037ebd8aaf257178c90b</a>
-Browsing around we can see the site is vulnerable to a LFI</p>
+<p><a href="http://192.168.56.101/c2444910794e037ebd8aaf257178c90b">http://192.168.56.101/c2444910794e037ebd8aaf257178c90b</a></p>
 
-<p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=welcome">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=welcome</a>
-<img class="<a" src="href="https://ryanoberto.github.io/images/ew_welcome.png">https://ryanoberto.github.io/images/ew_welcome.png</a>&#8221;></p>
+<p>Browsing around we can see the site is vulnerable to a LFI</p>
 
-<p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=flag">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=flag</a>
-<img class="<a" src="href="https://ryanoberto.github.io/images/ew_flag.png">https://ryanoberto.github.io/images/ew_flag.png</a>&#8221;></p>
+<p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=welcome">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=welcome</a></p>
 
-<p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=rule">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=rule</a>
-<img class="<a" src="href="https://ryanoberto.github.io/images/ew_rule.png">https://ryanoberto.github.io/images/ew_rule.png</a>&#8221;></p>
+<p><img class="<a" src="href="https://ryanoberto.github.io/images/ew_welcome.png">https://ryanoberto.github.io/images/ew_welcome.png</a>&#8221;></p>
 
-<p>What have we here, below looks vulnerable to a LFI and RFI
-<a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;url=http://127.0.0.1/c2444910794e037ebd8aaf257178c90b/data.txt">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;url=http://127.0.0.1/c2444910794e037ebd8aaf257178c90b/data.txt</a>
-<img class="<a" src="href="https://ryanoberto.github.io/images/ew_reader.png">https://ryanoberto.github.io/images/ew_reader.png</a>&#8221;></p>
+<p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=flag">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=flag</a></p>
+
+<p><img class="<a" src="href="https://ryanoberto.github.io/images/ew_flag.png">https://ryanoberto.github.io/images/ew_flag.png</a>&#8221;></p>
+
+<p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=party">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=party</a></p>
+
+<p><img class="<a" src="href="https://ryanoberto.github.io/images/ew_party.png">https://ryanoberto.github.io/images/ew_party.png</a>&#8221;></p>
+
+<p>What have we here, below looks vulnerable to a LFI and RFI</p>
+
+<p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;url=http://127.0.0.1/c2444910794e037ebd8aaf257178c90b/data.txt">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;url=http://127.0.0.1/c2444910794e037ebd8aaf257178c90b/data.txt</a></p>
+
+<p><img class="<a" src="href="https://ryanoberto.github.io/images/ew_reader.png">https://ryanoberto.github.io/images/ew_reader.png</a>&#8221;></p>
 
 <p>Convert the pages to base64 and download them</p>
 
