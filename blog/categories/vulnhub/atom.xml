@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vulnhub | CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/blog/categories/vulnhub/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-03-28T11:40:45+02:00</updated>
+  <updated>2017-03-28T11:50:59+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -58,23 +58,21 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 102.47 seconds
 </code></pre>
 
-<p>So we have port 22,80 and 3260</p>
+<p>So we have port 22,80 and 3260.</p>
 
-<p>opening firefox and connecting to the server greets us with</p>
+<p>Opening firefox and connecting to the server greets us with:</p>
 
 <p><img class="<a" src="href="https://ryanoberto.github.io/images/ew_http.png">https://ryanoberto.github.io/images/ew_http.png</a>&#8221;></p>
 
-<p>after running dirbuster and coming up with only trolls I moved on to port 3260</p>
+<p>After running dirbuster and coming up with only trolls, I moved on to port 3260.</p>
 
-<p>not knowing much about iscsi I went off to do a bit of reading.</p>
+<p>Not knowing much about iscsi I went off to do a bit of reading.</p>
 
-<p>iscsiadm -m discovery -t st -p 10.2.0.6</p>
+<p>following the instructions set out <a href="https://help.ubuntu.com/lts/serverguide/iscsi-initiator.html">here</a> mounted the share under /mnt/temp</p>
 
-<p>iscsiadm -m node &ndash;login</p>
-
-<p>dmesg | grep sd</p>
-
-<p>mount /dev/sdb /mnt/test</p>
+<pre><code>/mnt/temp # ls
+bobsdisk.dsk  flag1.txt  lost+found
+</code></pre>
 
 <pre><code>/mnt/temp # cat flag1.txt
 Congratulations! You've discovered the first flag!
@@ -85,62 +83,64 @@ Let's see how you go with the next one...
 ---------------------------------------------------
 </code></pre>
 
-<p>/mnt/temp # ls
-bobsdisk.dsk  flag1.txt  lost+found</p>
+<pre><code>/mnt/temp # file bobsdisk.dsk 
+bobsdisk.dsk: Linux rev 1.0 ext2 filesystem data, UUID=faef0c66-b61b-4d80-8c20-5e8da65345d4 (large files)
+------------------------------------------------------------
+</code></pre>
 
-<p>/mnt/temp # file bobsdisk.dsk</p>
+<pre><code>/mnt/temp # mkdir /mnt/disk
+------------------------------------------------------------
+/mnt/temp # mount bobsdisk.dsk /mnt/disk 
+------------------------------------------------------------
+</code></pre>
 
-<h2>bobsdisk.dsk: Linux rev 1.0 ext2 filesystem data, UUID=faef0c66-b61b-4d80-8c20-5e8da65345d4 (large files)</h2>
+<pre><code>/mnt/disk # ls
+lost+found  ToAlice.csv.enc  ToAlice.eml
+------------------------------------------------------------
+</code></pre>
 
-<h2>/mnt/temp # mkdir /mnt/disk</h2>
+<pre><code>/mnt/disk # file ToAlice.csv.enc 
+ToAlice.csv.enc: openssl enc'd data with salted password
+------------------------------------------------------------
+</code></pre>
 
-<h2>/mnt/temp # mount bobsdisk.dsk /mnt/disk </h2>
+<pre><code>/mnt/disk # cat ToAlice.eml 
 
-<h2>/mnt/temp # cd /mnt/disk </h2>
+G'day Alice,
 
-<p>/mnt/disk # ls</p>
 
-<h2>lost+found  ToAlice.csv.enc  ToAlice.eml</h2>
+You know what really annoys me? How you and I ended up being used, like some kind of guinea pigs, by the RSA crypto wonks as actors in their designs for public key crypto... I don't recall ever being asked if that was ok? I never got even one cent of royalties from them!? RSA have made Millions on our backs, and it's time we took a stand!
 
-<p>/mnt/disk # file ToAlice.csv.enc</p>
+Starting now, today, immediately, I'm never using asymmetric key encryption again, and it's all symmetric keys from here on out. All my files and documents will be encrypted with that popular symmetric crypto algorithm. Uh. Yeah, I can't pronounce its original name. I don't even know what the letters in its other name stand for - but really - that's not important. A bloke at my local hackerspace says its the beez kneez, ridgy-didge, real-deal, the best there is when it comes to symmetric key crypto, he has heaps of stickers on his laptop so I guess it means he knows, right? Anyway, he said it won some big important competition among crypto geeks in October 2000? Lucky Y2K didn't happen then, I suppose or that would have been one boring party!
 
-<h2>ToAlice.csv.enc: openssl enc&rsquo;d data with salted password</h2>
+Anyway this algorithm sounded good to me. I used the updated version that won the competition.
 
-<p>/mnt/disk # cat ToAlice.eml</p>
+You know what happened to me this morning? My kids, the little darlings, had spilled their fancy 256 bit Lego kit all over the damn floor. Sigh. Of course I trod on it making my coffee, the level of pain really does ROCKYOU to the core when it happens! It's hard to stay mad though, I really love Lego, the way those blocks chain togeather really does make them work brilliantly. My favourite new Spanish swear came in handy when this happened... supercalifragilisticoespialidoso !
 
-<p>G&#8217;day Alice,</p>
+Anyway, given I'm not not using asymmetric crypto any longer, I destroyed my private key, so the public key you have for me may as well be deleted. I've got some notes for you which might help in your current case, I've encrypted it using my new favourite symmetric key crypto algorithm, it should be on the disk with this note. The key is, well, one awesome word I learnt in my recent Spanish classes!
 
-<p>You know what really annoys me? How you and I ended up being used, like some kind of guinea pigs, by the RSA crypto wonks as actors in their designs for public key crypto&hellip; I don&rsquo;t recall ever being asked if that was ok? I never got even one cent of royalties from them!? RSA have made Millions on our backs, and it&rsquo;s time we took a stand!</p>
+Give me a shout when you're down this way again, we'll catch up for coffee (once the Lego is removed from my foot) :)
 
-<p>Starting now, today, immediately, I&rsquo;m never using asymmetric key encryption again, and it&rsquo;s all symmetric keys from here on out. All my files and documents will be encrypted with that popular symmetric crypto algorithm. Uh. Yeah, I can&rsquo;t pronounce its original name. I don&rsquo;t even know what the letters in its other name stand for - but really - that&rsquo;s not important. A bloke at my local hackerspace says its the beez kneez, ridgy-didge, real-deal, the best there is when it comes to symmetric key crypto, he has heaps of stickers on his laptop so I guess it means he knows, right? Anyway, he said it won some big important competition among crypto geeks in October 2000? Lucky Y2K didn&rsquo;t happen then, I suppose or that would have been one boring party!</p>
+Cheers,
 
-<p>Anyway this algorithm sounded good to me. I used the updated version that won the competition.</p>
+Bob.
 
-<p>You know what happened to me this morning? My kids, the little darlings, had spilled their fancy 256 bit Lego kit all over the damn floor. Sigh. Of course I trod on it making my coffee, the level of pain really does ROCKYOU to the core when it happens! It&rsquo;s hard to stay mad though, I really love Lego, the way those blocks chain togeather really does make them work brilliantly. My favourite new Spanish swear came in handy when this happened&hellip; supercalifragilisticoespialidoso !</p>
+PS: Oh, before I forget, the hacker-kid who told me how to use this new algorithm, said it was very important I used the command option -md sha256 when decrypting. Why? Who knows? He said something about living on the bleeding-edge...
 
-<p>Anyway, given I&rsquo;m not not using asymmetric crypto any longer, I destroyed my private key, so the public key you have for me may as well be deleted. I&rsquo;ve got some notes for you which might help in your current case, I&rsquo;ve encrypted it using my new favourite symmetric key crypto algorithm, it should be on the disk with this note. The key is, well, one awesome word I learnt in my recent Spanish classes!</p>
+PPS: flag2{054738a5066ff56e0a4fc9eda6418478d23d3a7f}
+</code></pre>
 
-<p>Give me a shout when you&rsquo;re down this way again, we&rsquo;ll catch up for coffee (once the Lego is removed from my foot) :)</p>
+<pre><code>$ openssl enc -aes-256-cbc -d -md sha256 -in ToAlice.csv.enc -out ToAlice.csv
+supercalifragilisticoespialidoso
+</code></pre>
 
-<p>Cheers,</p>
+<pre><code>/mnt/disk # cat ToAlice.csv
 
-<p>Bob.</p>
-
-<p>PS: Oh, before I forget, the hacker-kid who told me how to use this new algorithm, said it was very important I used the command option -md sha256 when decrypting. Why? Who knows? He said something about living on the bleeding-edge&hellip;</p>
-
-<p>PPS: flag2{054738a5066ff56e0a4fc9eda6418478d23d3a7f}</p>
-
-<p>————————————————————————</p>
-
-<p>$ openssl enc -aes-256-cbc -d -md sha256 -in ToAlice.csv.enc -out ToAlice.csv
-supercalifragilisticoespialidoso</p>
-
-<p>cat ToAlice.csv</p>
-
-<p>Web Path,Reason
+Web Path,Reason
 5560a1468022758dba5e92ac8f2353c0,Black hoodie. Definitely a hacker site!
 c2444910794e037ebd8aaf257178c90b,Nice clean well prepped site. Nothing of interest here.
-flag3{2cce194f49c6e423967b7f72316f48c5caf46e84},The strangest URL I&rsquo;ve seen? What is it?</p>
+flag3{2cce194f49c6e423967b7f72316f48c5caf46e84},The strangest URL I've seen? What is it?
+</code></pre>
 
 <p><a href="http://192.168.56.101/5560a1468022758dba5e92ac8f2353c0">http://192.168.56.101/5560a1468022758dba5e92ac8f2353c0</a></p>
 
