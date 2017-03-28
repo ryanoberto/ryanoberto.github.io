@@ -9,14 +9,23 @@
   <meta name="author" content="Ryan Oberto">
 
   
-  <meta name="description" content="Ew Skuzzy! CTF Walkthrough In this post I am going to show you how to solve the Ew Skuzzy CTF provided by vortexau. Service discovery 1
+  <meta name="description" content="In this post I am going to show you how to solve the Ew Skuzzy CTF provided by vortexau. Service discovery 1
 2
 3
 4
 5
 6
 7
-8 &hellip;">
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,9 +101,7 @@
   </header>
 
 
-<div class="entry-content"><h2>Ew Skuzzy! CTF Walkthrough</h2>
-
-<p>In this post I am going to show you how to solve the <a href="https://www.vulnhub.com/entry/ew_skuzzy-1,184/">Ew Skuzzy CTF</a> provided by <a href="https://twitter.com/@vortexau">vortexau</a>.</p>
+<div class="entry-content"><p>In this post I am going to show you how to solve the <a href="https://www.vulnhub.com/entry/ew_skuzzy-1,184/">Ew Skuzzy CTF</a> provided by <a href="https://twitter.com/@vortexau">vortexau</a>.</p>
 
 <h2>Service discovery</h2>
 
@@ -175,7 +182,7 @@
 
 <p>Not knowing much about iscsi I went off to do a bit of reading.</p>
 
-<p>following the instructions set out <a href="https://help.ubuntu.com/lts/serverguide/iscsi-initiator.html">here</a> mounted the share under /mnt/temp</p>
+<p>Following the instructions set out <a href="https://help.ubuntu.com/lts/serverguide/iscsi-initiator.html">here</a> mounted the share under /mnt/temp</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -183,7 +190,7 @@
 </span><span class='line'>bobsdisk.dsk  flag1.txt  lost+found</span></code></pre></td></tr></table></div></figure>
 
 
-
+<p>Flag 1</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -205,20 +212,18 @@
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>/mnt/temp # file bobsdisk.dsk 
-</span><span class='line'>bobsdisk.dsk: Linux rev 1.0 ext2 filesystem data, UUID=faef0c66-b61b-4d80-8c20-5e8da65345d4 (large files)
-</span><span class='line'>------------------------------------------------------------</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>bobsdisk.dsk: Linux rev 1.0 ext2 filesystem data, UUID=faef0c66-b61b-4d80-8c20-5e8da65345d4 (large files)</span></code></pre></td></tr></table></div></figure>
 
+
+<p>Create directory and mount the disk image</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>/mnt/temp # mkdir /mnt/disk
-</span><span class='line'>------------------------------------------------------------
-</span><span class='line'>/mnt/temp # mount bobsdisk.dsk /mnt/disk 
-</span><span class='line'>------------------------------------------------------------</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>/mnt/temp # mount bobsdisk.dsk /mnt/disk </span></code></pre></td></tr></table></div></figure>
+
+
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -229,6 +234,8 @@
 </span><span class='line'>------------------------------------------------------------</span></code></pre></td></tr></table></div></figure>
 
 
+<p>Checking what type of file we have here.</p>
+
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -237,7 +244,7 @@
 </span><span class='line'>------------------------------------------------------------</span></code></pre></td></tr></table></div></figure>
 
 
-
+<p>Flag 2</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -262,11 +269,9 @@
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
 <span class='line-number'>23</span>
-<span class='line-number'>24</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>/mnt/disk # cat ToAlice.eml 
 </span><span class='line'>
 </span><span class='line'>G'day Alice,
-</span><span class='line'>
 </span><span class='line'>
 </span><span class='line'>You know what really annoys me? How you and I ended up being used, like some kind of guinea pigs, by the RSA crypto wonks as actors in their designs for public key crypto... I don't recall ever being asked if that was ok? I never got even one cent of royalties from them!? RSA have made Millions on our backs, and it's time we took a stand!
 </span><span class='line'>
@@ -289,12 +294,12 @@
 </span><span class='line'>PPS: flag2{054738a5066ff56e0a4fc9eda6418478d23d3a7f}</span></code></pre></td></tr></table></div></figure>
 
 
-
+<p>Going off the above clues we decode the email.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ openssl enc -aes-256-cbc -d -md sha256 -in ToAlice.csv.enc -out ToAlice.csv
-</span><span class='line'>supercalifragilisticoespialidoso</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>password : supercalifragilisticoespialidoso</span></code></pre></td></tr></table></div></figure>
 
 
 
