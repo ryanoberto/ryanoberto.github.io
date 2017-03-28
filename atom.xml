@@ -4,7 +4,7 @@
   <title><![CDATA[CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-03-28T11:57:39+02:00</updated>
+  <updated>2017-03-28T12:01:29+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -20,7 +20,11 @@
     <id>http://ryanoberto.github.io/blog/2017/03/28/ew-skuzzy-ctf-walkthrough</id>
     <content type="html"><![CDATA[<p>In this post I am going to show you how to solve the <a href="https://www.vulnhub.com/entry/ew_skuzzy-1,184/">Ew Skuzzy CTF</a> provided by <a href="https://twitter.com/@vortexau">vortexau</a>.</p>
 
-<h2>Service discovery</h2>
+<p>After booting the image in VirtualBox we are greeted with the below, showing us the current ip</p>
+
+<p><img src="https://ryanoberto.github.io/images/ew_login.png"></p>
+
+<p>Fire off nmap for service discovery.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

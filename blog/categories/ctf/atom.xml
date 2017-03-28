@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ctf | CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/blog/categories/ctf/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-03-28T11:57:39+02:00</updated>
+  <updated>2017-03-28T12:01:29+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -20,57 +20,107 @@
     <id>http://ryanoberto.github.io/blog/2017/03/28/ew-skuzzy-ctf-walkthrough</id>
     <content type="html"><![CDATA[<p>In this post I am going to show you how to solve the <a href="https://www.vulnhub.com/entry/ew_skuzzy-1,184/">Ew Skuzzy CTF</a> provided by <a href="https://twitter.com/@vortexau">vortexau</a>.</p>
 
-<h2>Service discovery</h2>
+<p>After booting the image in VirtualBox we are greeted with the below, showing us the current ip</p>
 
-<pre><code>~/EW_Skuzzy # nmap -A -p- 10.0.2.6 
+<p><img class="<a" src="href="https://ryanoberto.github.io/images/ew_login.png">https://ryanoberto.github.io/images/ew_login.png</a>&#8221;></p>
 
-Starting Nmap 7.40 ( https://nmap.org ) at 2017-03-28 11:00 SAST
-sendto in send_ip_packet_sd: sendto(6, packet, 44, 0, 10.0.2.6, 16) =&gt; Operation not permitted
-Offending packet: TCP 10.0.2.5:43419 &gt; 10.0.2.6:25786 S ttl=57 id=14425 iplen=44  seq=2325605450 win=1024 &lt;mss 1460&gt;
-Nmap scan report for 10.0.2.6
-Host is up (0.00029s latency).
-Not shown: 65532 closed ports
-PORT     STATE SERVICE VERSION
-22/tcp   open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.1 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
-|   2048 89:c2:ae:12:d6:c5:19:4e:68:4a:28:e9:06:bd:9c:19 (RSA)
-|_  256 f0:0c:ae:37:10:d3:6d:a2:85:3a:77:04:06:94:f8:0a (ECDSA)
-80/tcp   open  http    nginx
-|_http-server-header: nginx
-|_http-title: Welcome!
-3260/tcp open  iscsi?
-|_iscsi-info: ERROR: Script execution failed (use -d to debug)
-MAC Address: 08:00:27:60:88:83 (Oracle VirtualBox virtual NIC)
-Device type: general purpose
-Running: Linux 3.X|4.X
-OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
-OS details: Linux 3.2 - 4.6
-Network Distance: 1 hop
-Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-
-TRACEROUTE
-HOP RTT     ADDRESS
-1   0.29 ms 10.0.2.6
-
-OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 102.47 seconds
-</code></pre>
-
-<p>So we have port 22,80 and 3260.</p>
-
-<p>Opening firefox and connecting to the server greets us with:</p>
-
-<p><img class="<a" src="href="https://ryanoberto.github.io/images/ew_http.png">https://ryanoberto.github.io/images/ew_http.png</a>&#8221;></p>
-
-<p>After running dirbuster and coming up with only trolls, I moved on to port 3260.</p>
-
-<p>Not knowing much about iscsi I went off to do a bit of reading.</p>
-
-<p>Following the instructions set out <a href="https://help.ubuntu.com/lts/serverguide/iscsi-initiator.html">here</a> mounted the share under /mnt/temp</p>
-
-<pre><code>/mnt/temp # ls
-bobsdisk.dsk  flag1.txt  lost+found
-</code></pre>
+<p>Fire off nmap for service discovery.
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>~/EW_Skuzzy # nmap -A -p- 10.0.2.6&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;Starting Nmap 7.40 ( &lt;a href="https://nmap.org"&gt;https://nmap.org&lt;/a&gt; ) at 2017-03-28 11:00 SAST
+</span><span class='line'>sendto in send_ip_packet_sd: sendto(6, packet, 44, 0, 10.0.2.6, 16) =&gt; Operation not permitted
+</span><span class='line'>Offending packet: TCP 10.0.2.5:43419 &gt; 10.0.2.6:25786 S ttl=57 id=14425 iplen=44  seq=2325605450 win=1024 &lt;mss 1460&gt;
+</span><span class='line'>Nmap scan report for 10.0.2.6
+</span><span class='line'>Host is up (0.00029s latency).
+</span><span class='line'>Not shown: 65532 closed ports
+</span><span class='line'>PORT     STATE SERVICE VERSION
+</span><span class='line'>22/tcp   open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.1 (Ubuntu Linux; protocol 2.0)
+</span><span class='line'>| ssh-hostkey:
+</span><span class='line'>|   2048 89:c2:ae:12:d6:c5:19:4e:68:4a:28:e9:06:bd:9c:19 (RSA)
+</span><span class='line'>|&lt;em&gt;  256 f0:0c:ae:37:10:d3:6d:a2:85:3a:77:04:06:94:f8:0a (ECDSA)
+</span><span class='line'>80/tcp   open  http    nginx
+</span><span class='line'>|&lt;/em&gt;http-server-header: nginx
+</span><span class='line'>|&lt;em&gt;http-title: Welcome!
+</span><span class='line'>3260/tcp open  iscsi?
+</span><span class='line'>|&lt;/em&gt;iscsi-info: ERROR: Script execution failed (use -d to debug)
+</span><span class='line'>MAC Address: 08:00:27:60:88:83 (Oracle VirtualBox virtual NIC)
+</span><span class='line'>Device type: general purpose
+</span><span class='line'>Running: Linux 3.X|4.X
+</span><span class='line'>OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
+</span><span class='line'>OS details: Linux 3.2 - 4.6
+</span><span class='line'>Network Distance: 1 hop
+</span><span class='line'>Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;TRACEROUTE
+</span><span class='line'>HOP RTT     ADDRESS
+</span><span class='line'>1   0.29 ms 10.0.2.6&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;OS and Service detection performed. Please report any incorrect results at &lt;a href="https://nmap.org/submit/"&gt;https://nmap.org/submit/&lt;/a&gt; .
+</span><span class='line'>Nmap done: 1 IP address (1 host up) scanned in 102.47 seconds&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;So we have port 22,80 and 3260.
+</span><span class='line'>
+</span><span class='line'>Opening firefox and connecting to the server greets us with: 
+</span><span class='line'>
+</span><span class='line'><img src="https://ryanoberto.github.io/images/ew_http.png">
+</span><span class='line'>
+</span><span class='line'>After running dirbuster and coming up with only trolls, I moved on to port 3260.
+</span><span class='line'>
+</span><span class='line'>Not knowing much about iscsi I went off to do a bit of reading.
+</span><span class='line'>
+</span><span class='line'>Following the instructions set out [here](https://help.ubuntu.com/lts/serverguide/iscsi-initiator.html) mounted the share under /mnt/temp
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;/mnt/temp # ls
+</span><span class='line'>bobsdisk.dsk  flag1.txt  lost+found</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Flag 1
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
