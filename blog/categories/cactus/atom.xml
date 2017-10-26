@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Cactus | CyberSlave]]></title>
+  <link href="http://ryanoberto.github.io/blog/categories/cactus/atom.xml" rel="self"/>
+  <link href="http://ryanoberto.github.io/"/>
+  <updated>2017-10-26T19:22:32+02:00</updated>
+  <id>http://ryanoberto.github.io/</id>
+  <author>
+    <name><![CDATA[Ryan Oberto]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Cactus HID Cheatsheet]]></title>
+    <link href="http://ryanoberto.github.io/blog/2017/10/26/cactus-hid-cheatsheet/"/>
+    <updated>2017-10-26T19:18:30+02:00</updated>
+    <id>http://ryanoberto.github.io/blog/2017/10/26/cactus-hid-cheatsheet</id>
+    <content type="html"><![CDATA[<h1>ESPloitV2</h1>
+
+<p><a href="https://github.com/exploitagency/ESPloitV2">https://github.com/exploitagency/ESPloitV2</a></p>
+
+<p>Windows</p>
+
+<h1>Windows key R</h1>
+
+<p>Press:131+114</p>
+
+<p>PrintLine:cmd
+PrintLine:ipconfig
+Print:I am watching you</p>
+
+<h1>CTRL-c</h1>
+
+<p>Press:128+99
+PrintLine:exit</p>
+
+<h1>Settings</h1>
+
+<p>Press:131+117</p>
+
+<p>Press:131+32</p>
+
+<p>MacOS</p>
+
+<h1>search Mac</h1>
+
+<p>Press:131+32
+PrintLine:iterm
+PrintLine:ifconfig</p>
+]]></content>
+  </entry>
+  
+</feed>
