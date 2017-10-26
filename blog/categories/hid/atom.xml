@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Hid | CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/blog/categories/hid/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-10-26T19:31:50+02:00</updated>
+  <updated>2017-10-26T19:39:24+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -22,13 +22,14 @@
 
 <p><a href="https://github.com/exploitagency/ESPloitV2">https://github.com/exploitagency/ESPloitV2</a></p>
 
-<h4>Keystrokes</h4>
+<p>ALT-H4 Keystrokes</p>
 
 <h5>Windows</h5>
 
 <h6>Windows key R</h6>
 
-<p><code>Press:131+114</code></p>
+<pre><code>Press:131+114
+</code></pre>
 
 <p>PrintLine:cmd</p>
 
@@ -36,24 +37,28 @@
 
 <p>Print:I am watching you</p>
 
-<h1>CTRL-c</h1>
+<h6>CTRL-c</h6>
 
-<p><code>Press:128+99</code></p>
+<pre><code>Press:128+99
+</code></pre>
 
 <p>PrintLine:exit</p>
 
-<h1>Settings</h1>
+<h6>Settings</h6>
 
-<p>Press:131+117</p>
+<pre><code>Press:131+117
+</code></pre>
 
 <p>Press:131+32</p>
 
 <p>MacOS</p>
 
-<h1>search Mac</h1>
+<h6>Spotlight -</h6>
 
-<p>Press:131+32
-PrintLine:iterm
+<pre><code>Press:131+32
+</code></pre>
+
+<p>PrintLine:iterm
 PrintLine:ifconfig</p>
 ]]></content>
   </entry>
