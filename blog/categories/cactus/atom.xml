@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Cactus | CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/blog/categories/cactus/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-10-26T19:24:53+02:00</updated>
+  <updated>2017-10-26T19:29:41+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -22,20 +22,23 @@
 
 <p><a href="https://github.com/exploitagency/ESPloitV2">https://github.com/exploitagency/ESPloitV2</a></p>
 
-<p>Windows</p>
+<h3>Windows</h3>
 
-<h1>Windows key R</h1>
+<h5>Windows key R</h5>
 
-<p>Press:131+114</p>
+<p><code>Press:131+114</code></p>
 
-<p>PrintLine:cmd
-PrintLine:ipconfig
-Print:I am watching you</p>
+<p>PrintLine:cmd</p>
+
+<p>PrintLine:ipconfig</p>
+
+<p>Print:I am watching you</p>
 
 <h1>CTRL-c</h1>
 
-<p>Press:128+99
-PrintLine:exit</p>
+<p><code>Press:128+99</code></p>
+
+<p>PrintLine:exit</p>
 
 <h1>Settings</h1>
 
