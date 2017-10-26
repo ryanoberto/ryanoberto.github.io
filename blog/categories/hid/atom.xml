@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Hid | CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/blog/categories/hid/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-10-26T20:07:26+02:00</updated>
+  <updated>2017-10-26T20:09:01+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -18,8 +18,11 @@
     <link href="http://ryanoberto.github.io/blog/2017/10/26/cactus-hid-cheatsheet/"/>
     <updated>2017-10-26T19:18:30+02:00</updated>
     <id>http://ryanoberto.github.io/blog/2017/10/26/cactus-hid-cheatsheet</id>
-    <content type="html"><![CDATA[<p>ALT-H2 ESPloitV2
-<a href="https://github.com/exploitagency/ESPloitV2">https://github.com/exploitagency/ESPloitV2</a></p>
+    <content type="html"><![CDATA[<h2>ESPloitV2</h2>
+
+<hr />
+
+<p><a href="https://github.com/exploitagency/ESPloitV2">https://github.com/exploitagency/ESPloitV2</a></p>
 
 <h4>Keystrokes</h4>
 
@@ -29,15 +32,13 @@
 
 <h6>Windows key R</h6>
 
-<p><code>
-Press:131+114
-</code></p>
+<pre><code>Press:131+114
+</code></pre>
 
 <h6>Type cmd</h6>
 
-<p><code>
-PrintLine:cmd
-</code></p>
+<pre><code>PrintLine:cmd
+</code></pre>
 
 <h6>CTRL-c</h6>
 
