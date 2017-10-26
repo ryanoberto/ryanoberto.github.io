@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Hid | CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/blog/categories/hid/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-10-26T20:04:31+02:00</updated>
+  <updated>2017-10-26T20:05:32+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -29,19 +29,19 @@
 
 <h6>Windows key R</h6>
 
-<p>`</p>
+<p>&#8220;</p>
 
 <p>Press:131+114</p>
 
-<p>`</p>
+<p>&#8220;</p>
 
 <h6>Type cmd</h6>
 
-<p>`</p>
+<p>&#8220;</p>
 
 <p>PrintLine:cmd</p>
 
-<p>`</p>
+<p>&#8220;</p>
 
 <h6>CTRL-c</h6>
 
