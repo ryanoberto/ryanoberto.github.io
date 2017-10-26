@@ -4,7 +4,7 @@
   <title><![CDATA[CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-10-26T20:09:01+02:00</updated>
+  <updated>2017-10-26T20:11:44+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -30,7 +30,7 @@
 
 <hr />
 
-<h6>Windows key R</h6>
+<h6>Windows key + R</h6>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>Press:131+114</span></code></pre></td></tr></table></div></figure>
@@ -48,13 +48,13 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>Press:128+99</span></code></pre></td></tr></table></div></figure>
 
 
-<p>PrintLine:exit</p>
-
 <h6>Settings</h6>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>Press:131+117</span></code></pre></td></tr></table></div></figure>
 
+
+<h6>Cant Remember :-)</h6>
 
 <p>Press:131+32</p>
 
@@ -65,14 +65,10 @@
 <h6>Spotlight -</h6>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>Press:131+32
-</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Press:131+32</span></code></pre></td></tr></table></div></figure>
 
 
-<p>PrintLine:iterm
-PrintLine:ifconfig</p>
+
 ]]></content>
   </entry>
   

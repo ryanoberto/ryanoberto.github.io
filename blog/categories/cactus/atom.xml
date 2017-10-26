@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Cactus | CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/blog/categories/cactus/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-10-26T20:09:01+02:00</updated>
+  <updated>2017-10-26T20:11:44+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -30,7 +30,7 @@
 
 <hr />
 
-<h6>Windows key R</h6>
+<h6>Windows key + R</h6>
 
 <pre><code>Press:131+114
 </code></pre>
@@ -45,12 +45,12 @@
 <pre><code>Press:128+99
 </code></pre>
 
-<p>PrintLine:exit</p>
-
 <h6>Settings</h6>
 
 <pre><code>Press:131+117
 </code></pre>
+
+<h6>Cant Remember :-)</h6>
 
 <p>Press:131+32</p>
 
@@ -60,12 +60,8 @@
 
 <h6>Spotlight -</h6>
 
-<pre><code>
-Press:131+32
+<pre><code>Press:131+32
 </code></pre>
-
-<p>PrintLine:iterm
-PrintLine:ifconfig</p>
 ]]></content>
   </entry>
   
