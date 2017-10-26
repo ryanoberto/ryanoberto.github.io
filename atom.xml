@@ -4,7 +4,7 @@
   <title><![CDATA[CyberSlave]]></title>
   <link href="http://ryanoberto.github.io/atom.xml" rel="self"/>
   <link href="http://ryanoberto.github.io/"/>
-  <updated>2017-10-26T19:39:24+02:00</updated>
+  <updated>2017-10-26T19:52:40+02:00</updated>
   <id>http://ryanoberto.github.io/</id>
   <author>
     <name><![CDATA[Ryan Oberto]]></name>
@@ -18,13 +18,14 @@
     <link href="http://ryanoberto.github.io/blog/2017/10/26/cactus-hid-cheatsheet/"/>
     <updated>2017-10-26T19:18:30+02:00</updated>
     <id>http://ryanoberto.github.io/blog/2017/10/26/cactus-hid-cheatsheet</id>
-    <content type="html"><![CDATA[<h3>ESPloitV2</h3>
+    <content type="html"><![CDATA[<p>ALT-H2 ESPloitV2
+<a href="https://github.com/exploitagency/ESPloitV2">https://github.com/exploitagency/ESPloitV2</a></p>
 
-<p><a href="https://github.com/exploitagency/ESPloitV2">https://github.com/exploitagency/ESPloitV2</a></p>
-
-<p>ALT-H4 Keystrokes</p>
+<h4>Keystrokes</h4>
 
 <h5>Windows</h5>
+
+<hr />
 
 <h6>Windows key R</h6>
 
